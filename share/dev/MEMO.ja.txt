@@ -1,12 +1,12 @@
 ====================
-�J������
+開発メモ
 ====================
 
- �J���p�̏��u���ł��B
+ 開発用の書置きです。
 
 
 --------------------
-��W
+募集
 --------------------
 
  * ICON
@@ -16,14 +16,14 @@ Schedule
 --------------------
 
  * v1.14
-   * �T�[�o��ԊĎ��̃I�v�V�����i�X�V���ԁj���̐ݒ�
-   * Ninjammer�̏�ԊĎ�
+   * サーバ状態監視のオプション（更新時間）等の設定
+   * Ninjammerの状態監視
 
  * v1.13
-   * songbook.hta �ꗗ�̃R���|�[�l���g��
-     * �_�u���N���b�N�ōĕҏW���o����悤�� ... done
-     * �폜���j���[                         ... done
-     * �\�[�g
+   * songbook.hta 一覧のコンポーネント化
+     * ダブルクリックで再編集が出来るように ... done
+     * 削除メニュー                         ... done
+     * ソート
      * Page
      * Live-Search
 
@@ -31,88 +31,88 @@ Schedule
 TODO
 --------------------
 
- * ���[�U�g���̍��� How To
-   * �p��ŒN�������āE�E�E
+ * ユーザ拡張の作り方 How To
+   * 英語版誰か書いて・・・
 
- * API document �̐���
-   * ���������p�h�L�������g�̑����̊m�F
-   * js �p�� doxygen �𒲂ׂ�
+ * API document の生成
+   * 自動生成用ドキュメントの属性の確認
+   * js 用の doxygen を調べる
 
- * Restructured Document �Ńh�L�������g�\�L
-   * syntax highlight �ɂ��Ē��ׂ� (pygments)
+ * Restructured Document でドキュメント表記
+   * syntax highlight について調べる (pygments)
 
- * git/hg �Ń\�[�X�Ǘ�
-   * ���[�J���ł���Ă���̂��Agoogle code �� github ��
+ * git/hg でソース管理
+   * ローカルでやっているのを、google code か github へ
 
- * ���s�t�@�C����@���Ƃ��Ɉꎞ�I�ɏo��v�����v�g�̉���
-   * WSH.Run(cmdline, 7, true) ���g���Δ�\���ɏo���邪�A
-     �R�}���h����̏o�͂��󂯎��Ȃ��B
-   * COM�I�u�W�F�N�g�ɂ�����@���ǂ����������ǁA
-     �V�X�e���ɓo�^����K�v����������E�C���X�g�[���������
-     ��Ԃ����肻���Ȃ̂Ōh���Bwin32/C++�̊����Ȃ����B
-   * AIR/SilverLight/XUL Runner �ӂ�̌����B
-   * ���_: ����������E�E�E
+ * 実行ファイルを叩くときに一時的に出るプロンプトの解消
+   * WSH.Run(cmdline, 7, true) を使えば非表示に出来るが、
+     コマンドからの出力を受け取れない。
+   * COMオブジェクトにする方法が良さそうだけど、
+     システムに登録する必要があったり・インストーラ作ったり
+     手間かかりそうなので敬遠。win32/C++の環境もないし。
+   * AIR/SilverLight/XUL Runner 辺りの検討。
+   * 結論: 当分見送り・・・
 
- * �ȁE�R�[�h�̕ҏW
-   * ���[�U�E�f�[�^�Ə����̃f�[�^��ʃt�@�C���ɂ��ĊǗ��B
+ * 曲・コードの編集
+   * ユーザ・データと初期のデータを別ファイルにして管理。
    
- * �G�f�B�^�̃C���^�[�t�F�[�X�čl(TODO)
-   * ���X�g�ꗗ���_�u���N���b�N�ōĕҏW
-   * �����^�C�g���̋Ȃ𑽏d�o�^�ł��Ȃ��悤�ɁB�i�폜�ɍ���j
-   * �E�N���b�N�ŃR���e�L�X�g���j���[���o���B�i�폜�ׁ̈j
-   * Edit ��ʂŃL�[�ύX�EBPM/BPI�ύX���� SETUP/ Chords ���M�o����悤�ɁB
-   * Meter �p�����[�^���f�[�^�Ɋ܂߂�H (�������́Abars/bpi �ŋ��߂�)
+ * エディタのインターフェース再考(TODO)
+   * リスト一覧をダブルクリックで再編集
+   * 同じタイトルの曲を多重登録できないように。（削除に困る）
+   * 右クリックでコンテキストメニューを出す。（削除の為）
+   * Edit 画面でキー変更・BPM/BPI変更して SETUP/ Chords 送信出来るように。
+   * Meter パラメータをデータに含める？ (もしくは、bars/bpi で求める)
  
- * �f�[�^�ۑ��E�폜�i�t�@�C���������݁j�̖��_
-   * �t�@�C���x�[�X�Ȃ̂Ńf�[�^�͑S�ăI��������
-   * �f�[�^���ꌏ�X�V���邽�߂ɁA�S�Ẵf�[�^���ď������݂��Ă���i����j
-   * �f�[�^�x�[�X�𓱓�����ƁA�C���X�g�[���E�A���C���X�g�[����
-     ��Ԃ����������Ȃ̂ŁA������h���B
+ * データ保存・削除（ファイル書き込み）の問題点
+   * ファイルベースなのでデータは全てオンメモリ
+   * データを一件更新するために、全てのデータを再書き込みしている（現状）
+   * データベースを導入すると、インストール・アンインストール等
+     手間が増えそうなので、これも敬遠。
 
- * Twitter Widget �g���Ă݂�
-   * widget �� songbook.js �ł̓G���[�H�P�̂��Ɠ���(./share/test/twitter.hta)
-   * �O���[�o���ϐ����p���Ă���̂ŁA�O�����C�u�������g�������ꍇ�́A�v�Đ݌v�B
+ * Twitter Widget 使ってみる
+   * widget が songbook.js ではエラー？単体だと動く(./share/test/twitter.hta)
+   * グローバル変数多用しているので、外部ライブラリ等使いたい場合は、要再設計。
  
- * ���A�����O�� WEB �T�[�r�X�Ƃ̘A�g�@�\�B
-   * JSONP, RPC �n�g����Ƃ��낪�����B�T�C�g���Ƀp�[�T���̖ʓ|�B
+ * 他、何か外部 WEB サービスとの連携機能。
+   * JSONP, RPC 系使えるところがいい。サイト毎にパーサ作るの面倒。
    
  * XMLHttpRequest
-   * IE �� bugs ? text/xml ���Ȃ��� responseXML ����ɂȂ�
-   * XHR.overrideMimeType ���\�b�h���Ȃ�
+   * IE の bugs ? text/xml がないと responseXML が空になる
+   * XHR.overrideMimeType メソッドがない
    * http://www.quirksmode.org/blog/archives/2005/09/xmlhttp_notes_r.html
-   * MSDOM���g���� responseText ���p�[�X�H
+   * MSDOMを使って responseText をパース？
    
 
 -----------------
-version 2.0 �v��
+version 2.0 計画
 -----------------
 
- �A�C�f�A�݂̂ł��B�������Ȃ��B
+ アイデアのみです。多分やらない。
  
- * NINJAM�֘A�̃f�[�^���ꊇ�Ǘ����鑍�����[�e�B���e�B
-   * �Đ݌v
-     * ���v���b�g�t�H�[���Ή� (Mac OSX,Linux)
-     * �v���b�g�t�H�[���Ɉˑ����Ȃ������̃R�[�h���L
-       * XUL,AIR ���̑� RIA ��������
-   * reaper �Ή�
-     * NINJAM client/reaper �Ƃ̘A�g�����̃��C�u������
-       * �]���ł�reaper�ł̓X�N���v�g���g���Ȃ������B
+ * NINJAM関連のデータを一括管理する総合ユーティリティ
+   * 再設計
+     * 他プラットフォーム対応 (Mac OSX,Linux)
+     * プラットフォームに依存しない部分のコード共有
+       * XUL,AIR 等の他 RIA 環境を検討
+   * reaper 対応
+     * NINJAM client/reaper との連携部分のライブラリ化
+       * 評価版のreaperではスクリプトが使えなかった。
   
- * �ȃf�[�^�̋��L�E�Ǘ�
-   * Web �T�C�g���K�v, GAE�̌����B
+ * 曲データの共有・管理
+   * Web サイトが必要, GAEの検討。
 
- * Database �Ή�
-   * ���
-     * HTML5 �� Web Storage �҂�
+ * Database 対応
+   * 候補
+     * HTML5 の Web Storage 待ち
      * SQLite COM
      * MDAC (Microsoft Data Access Components)
      * flash storage/google gear
      * ADO
 
  * NINJAM Chat
-   * Font �ύX
-     * �ʃv���Z�X�ׁ̈AEM_SETCHARFORMAT�������Ȃ������B
-       * �΍�: DLL injection ?
-   * URL �����N�̏C�� (���{�ꂪ���鎞�A�����N�ʒu�������)
-   * �`���b�g��ʂ̓����v���O���� (Hook�� EM_SETSEL ������ꍇ)
+   * Font 変更
+     * 別プロセスの為、EM_SETCHARFORMATが効かなかった。
+       * 対策: DLL injection ?
+   * URL リンクの修正 (日本語がある時、リンク位置がずれる)
+   * チャット画面の同期プログラム (Hookで EM_SETSEL が取れる場合)
 
