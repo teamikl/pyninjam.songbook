@@ -1,0 +1,17 @@
+
+
+2010-05-11 tea <Ikkei.Shimomura@gmail.com>
+
+	* songbook.hta 起動時にアップデートを確認
+
+2010-05-04 tea <Ikkei.Shimomura@gmail.com>
+
+	* チャットログを保存する際のファイル名・タイムスタンプの桁揃えを修正
+
+2010-04-29 tea <Ikkei.Shimomura@gmail.com>
+
+	* サーバ・ステータスの表示を実験的に開始。
+
+2010-04-28 tea <Ikkei.Shimomura@gmail.com>
+
+	* 曲データ作成用のエディタ作り始め (./editsong.hta)

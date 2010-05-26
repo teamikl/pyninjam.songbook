@@ -1,0 +1,146 @@
+=====================================================
+カスタマイズについて
+=====================================================
+
+
+---------------------------------
+設定 (/user/conf/settings.js)
+---------------------------------
+
+BPM/BPIのリストの設定。
+rangeの内容は、40から200迄の範囲で10ずつという意味です。
+
+  var BPM = range(40, 200, 10)
+  var BPI = [4,8,16,24,32,48,64]
+
+
+ロケールの設定
+日本語の人は 'ja' に設定。メニューの日本語化と、
+日本語サイトへのリンクが表示されます。
+
+  var user_locale = 'ja'
+
+
+"Misc", "Options" の表示
+オプション等を使わず、コンパクトな表示にしたい場合 false を設定してください。
+
+  var advanced_mode = ture
+
+
+
+各コントロールの初期値を設定します。
+
+  var default_vote_on_change_checked = false
+  var defailt_confirm_on_submit_checked = true
+  var default_bpm = 120
+  var default_bpi = 16
+  
+
+起動時。更新があったときに通知します。
+
+  var alert_update = true
+
+
+リンクをクリックした時、false ではInternetExplorer で url を開きます。
+普段使っているブラウザを利用してリンクを開きたい場合は true に設定します。
+
+  var use_your_default_browser = true
+
+チャット・ログを保存するときの拡張子と、
+保存後、NINJAMのチャットログを消去するかどうかの設定
+
+  var chatlog_ext = ".log"
+  var clear_on_char = true
+
+
+リンクの表示・非表示と表示位置(true=top, false=bottom) を設定します。
+
+  var show_useful_site_links = true
+  var show_links_on_top = true
+  
+テーマの設定
+Themeの利用 (true/false) と /share/theme/ 以下に置いた theme css の名前を列挙します。
+
+  var use_theme = true
+  var theme_list = ['default', 'ninbot']
+
+
+Misc ボタンの順序・・・ボタンの順序を変更できます。
+
+  var misc_buttons_order = [
+    'random', 'clipboard', 'save', 'clear', 'reset', 'ninjam'
+  }
+
+
+  
+ウィンドウの初期位置・サイズ
+位置(x,y) がマイナス値の場合は、中央に表示されます。
+
+  var window_x = -1
+  var window_y = -1
+  var window_width = 400
+  var window_height = 200
+
+
+ウィンドウのタイトル
+
+  var window_title = 'your title here'
+
+
+-----------------------------------------
+曲リストデータのカスタマイズ (/user/data/songlist.js)
+-----------------------------------------
+
+[タイトル, BPM, BPI, コード] から成るリストです。
+コード部分には JavaScript の Song オブジェクトが利用できます。
+
+例:
+
+  new Song('Dm', 'G7', 'C', 'A7').key('C')
+
+
+設定した値が 0 もしくは null 値の時、変更・メッセージの送信は発生しません。
+
+  ['default', 120, 16, null]      ... BPM/BPI変更のみ。コードは通知しない。
+  ['12 bars blues', 0, 48, null]  ... BPI 変更のみ。
+
+
+---------------------------------
+スタイルのカスタマイズ
+---------------------------------
+
+
+  新しいテーマを作成する場合
+  /share/theme/theme.template.css をコピーして書き始められます。
+
+
+  作成したテーマは、設定ファイルの theme_dir で設定したフォルダへ置いてください。
+
+  登録は、theme_list へ作成したテーマの名前(ファイル名の拡張子なし)を追加します。
+  一番最初のものがデフォルトのテーマになります。
+
+
+---------------------------------
+日本語化 (/share/locale/ja.js)
+---------------------------------
+
+
+
+
+---------------------------------
+機能のカスタマイズ (/user/conf/init.js)
+---------------------------------
+
+  TODO: 今度書く
+
+  追加で読み込まれる、ユーザ拡張 JS/CSS を記述する。
+
+
+---------------------------------
+補足説明
+---------------------------------
+
+  * 設定ファイル等を変更した後は、F5 キーを押すことで再読み込みが出来ます。
+
+
+__EOF__

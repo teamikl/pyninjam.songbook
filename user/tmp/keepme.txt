@@ -1,0 +1,6 @@
+//
+// This file is only needed to contain 'chatlog' directory
+// into Zip archive. 'keepme' was means for the Zip packer.
+//
+// You can remove this file.
+// 

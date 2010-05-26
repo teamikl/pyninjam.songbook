@@ -1,0 +1,45 @@
+
+
+ul.tab-menu {
+  text-align: left;
+  display: block;
+  margin: 5px;
+  background-color: #aaaaff;
+}
+
+.tab-menu li {
+  text-align: center;
+  display: inline;
+  width: 100px;
+  margin: 1px;
+  font-size: 18px;
+  font-family: "Comic Sans MS";
+}
+
+.tab-menu-selected {
+  border-top: 1px solid #aaaaff;
+  border-left: 1px solid #aaaaff;
+  border-right: 1px solid #aaaaff;
+  background-color: #7777ff;
+  width: 100px;
+}
+.tab-menu-selected a {
+  color: white;
+}
+
+.tab-menu-unselected {
+  color: #7777ff;
+  background-color: #aaaaff;
+  width: 100px;
+  
+}
+
+.tab-panel {
+  padding: 5px;
+  display: block;
+
+}
+.tab-hide {
+  display: none;
+}
+

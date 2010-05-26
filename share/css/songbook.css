@@ -1,0 +1,144 @@
+
+table {
+  border: 1px solid black;
+  width: 700px;
+  height: 300px;
+}
+tr th {
+  background: #eeeeff;
+}
+tr td {
+  border-bottom: 1px solid black;
+  padding: 5px;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+tr {
+  cursor: hand;
+}
+
+tr.mouseover {
+  background-color: #ddddff;
+}
+
+tr.mouseout {
+  background-color: white;
+}
+
+input.focus {
+  background-color: #eeffee;
+}
+input.blur {
+  background-color: white;
+}
+
+
+button {
+  cursor: hand;
+  margin-left: 5px;
+}
+
+div#main {
+  text-align: center;
+  display: block;
+}
+
+.tab-panel {
+  height: 500px;
+  overflow-y: scroll;
+}
+
+#edit-manual {
+  text-align: left;
+}
+
+
+form p input {
+  border: solid 1px black;
+  text-align: center;
+  padding: 2px;
+  ime-mode: disabled;
+}
+
+select {
+  width: 100px;
+}
+
+input#song-title {
+  width: 400px;
+  font-size: 24px;
+  margin-top: 100px;
+}
+input#key {
+  font-size: 15px;
+}
+input#key, input#song-title {
+  border: none;
+  border-bottom: solid 1px black;
+  text-align: center;
+  ime-mode: disabled;
+}
+
+button {
+  border: solid 1px black;
+}
+
+#delkey {
+  display: none;
+}
+
+input.disabled {
+  background-color: #dddddd;
+}
+
+
+ul#server_menu {
+  display: block;
+  margin: 5px;
+}
+
+ul#server_menu li {
+  display: inline;
+}
+
+div#server_status {
+  padding: 5px;
+  display: block;
+  text-align: left;
+  font-family: monospace;
+}
+
+#server_status h4 {
+  padding: 2px;
+  margin: 0px;
+  background-color: #ddddff;
+  cursor: hand;
+}
+
+#server_status ul {
+  margin: 2px;
+}
+
+#server_status ul li {
+  text-align: left;
+  list-style: none;
+}
+
+#develop {
+  text-align: left;
+}
+
+#twitter {
+  text-align: left;
+}
+
+#twitter ul li span {
+  font-size: 10px;
+  color: #aaaaaa;
+}
+
+/* no need */
+#toolbox {
+  display: none;
+}

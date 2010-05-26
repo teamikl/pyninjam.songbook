@@ -1,0 +1,67 @@
+/* Template for customize CSS */
+
+body {
+  background-color: whitesmoke; 
+  color: maroon;
+  font-size: 12;
+  padding: 2px;
+  margin: 0px;
+}
+
+form {
+  margin-top: 2px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+
+fieldset {
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px;
+  margin: 0px;
+}
+
+legend {
+  font-weight: normal;
+  float: right;
+}
+
+select {
+  background-color: maroon;
+  color: whitesmoke;
+}
+
+select#bpm, select#bpm {
+    
+}
+
+select#song {
+
+}
+
+button {
+  margin-left: 5px; /* for layout */
+  border-style: solid;
+  border-color: maroon;
+  background-color: whitesmoke;
+  color: maroon;
+}
+
+label {
+  font-weight: normal;
+}
+
+div#links {
+  background-color: maroon;
+  padding: 5px; 
+}
+
+a {
+  text-decoration: underline;
+  color: white;
+}
+
+a:hover {
+  color: white;
+}
+

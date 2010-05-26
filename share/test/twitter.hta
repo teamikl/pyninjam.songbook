@@ -1,0 +1,45 @@
+<html>
+<head>
+<title></title>
+<script>
+  window.attachEvent('onload', function(){
+    document.title = document.getElementById('hta_app').applicationname
+    window.resizeTo(400,500)
+    window.moveTo(0, 0)
+  })
+</script>
+<hta:application
+  id="hta_app"
+  applicationname="Test Twitter Widget"
+  border="thick"
+  borderstyle="normal"
+  caption="yes"
+  icon=""
+  innerborder="no"
+  maximizebutton="no"
+  minimizebutton="yes"
+  showintaskbar="yes"
+  singleinstance="yes"
+  sysmenu="yes"
+  version="1.0"
+  windowstate="normal"
+  scroll="no"
+  selection="no"
+  contextmenu="no"
+  navibable="yes"
+  />
+<script type="text/javascript" src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script type="text/javascript" src="../js/twitter.js"></script>
+<style>
+  body { 
+    margin: 0px;
+  }
+</style>
+</head>
+<body>
+<script>
+
+  createTwitterWidget()
+</script>
+</body>
+</html>

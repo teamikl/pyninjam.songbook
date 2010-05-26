@@ -1,0 +1,112 @@
+==================================================
+ ninjam_chat.exe を利用したプログラムの開発
+==================================================
+
+
+基本的に、出来ることは
+
+『 win32/ninjam client のチャットへ 何か文字を送る 』
+
+これだけです。
+
+    
+    * /bin/ninjam_chat.exe "メッセージ"
+
+        ninjamへ メッセージを送信するコマンド
+
+        改行や空白を含む長文を送る場合、ダブルクォート等で囲ってください。
+
+
+    * /bin/ninjam_vote.bat [bpm|bpi] number
+
+        ninjamへ !voteコマンドを送信するコマンド
+
+
+    * /share/dev/src/ninjam_chat.c
+
+        上記のソースコード。tcc(tiny c compiler)でコンパイルしています。
+
+
+
+ninjam_chat.c 解説
+-------------------
+
+    (1) Ninjam client のウィンドウを探し出す。
+        Ninjam client は起動し、予めサーバへ接続しておいて下さい。
+
+    (2) チャットの発言入力欄のコントロールを探し出す。
+
+    (3) 入力欄に文字列を設定する。
+
+    (4) ENTERキー入力を送り、発言を送信する。
+
+
+
+    コンパイルには tcc (http://bellard.org/tcc/) の Windows binary を利用し、
+    "tcc.exe ninjam_chat.c -user32" としてコンパイルしています。
+
+
+
+
+スクリプトからコマンドを呼び出す。(JavaScript)
+--------------------------------------------------
+
+  var WSH = new ActiveXObject("WScript.Shell")
+
+  function ninjam_chat(message) {
+    return WSH.Run('ninjam_chat "' + message + '"', 7) 
+  }
+
+  function ninjam_vote(type, num) {
+    return ninjam_chat(['!vote', type, num].join(' '))
+  }
+
+  ninjam_vote('bpi', 16)
+  ninjam_vote('bpm', 120)
+  ninjam_chat('||: Am | D7 :||')
+
+
+  // ※ 注意
+  // 
+  // ブラウザ上のJavaScriptからは、セキュリティ等の制限により
+  // 通常、外部プログラムの呼び出しは行えません。
+  // 
+  // JavaScript で開発する場合は、
+  // WSH(Windows Scripting Host), HTA(HTML Application) 等の仕組みを利用してください。
+  //
+
+
+  // ※ 補足
+  //
+  // WSH.Run の第二引数 '7' は、外部プログラム実行時にプロンプトを表示させないためのオプション。
+  //
+
+
+
+サンプル・スクリプト sayhi.js
+---------------------------------------------------
+
+  var WSH = new ActiveXObject("WScript.Shell")
+
+  WSH.Run('ninjam_chat hi', 7)
+
+
+
+  ファイルの内容は、上記の2行のみ。
+  ninjam_chat.exe が置いてあるのと同じ、/bin/ ディレクトリ内に保存します。
+
+  Ninjam clientを起動し、サーバへ接続した状態で
+  sayhi.js をダブルクリックすると hi というメッセージを送信します。
+
+  この sayhi.js ファイルのショートカットを作成し、
+  ショートカットのプロパティのショートカットの所でホットキーを設定すると、
+  設定したキーを押すだけでスクリプトを実行できるようになります。
+
+
+  ちなみに僕は、
+  右手の人差し指・中指・小指で'h','i','(Enter)' を ワン・ストロークでタイプしています。
+  演奏が途切れないように、右手を離してる間は、ロングトーン等で誤魔化すのがポイントです :)
+
+
+
+__EOF__

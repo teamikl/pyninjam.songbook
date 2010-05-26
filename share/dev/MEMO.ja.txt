@@ -1,0 +1,118 @@
+====================
+開発メモ
+====================
+
+ 開発用の書置きです。
+
+
+--------------------
+募集
+--------------------
+
+ * ICON
+
+--------------------
+Schedule
+--------------------
+
+ * v1.14
+   * サーバ状態監視のオプション（更新時間）等の設定
+   * Ninjammerの状態監視
+
+ * v1.13
+   * songbook.hta 一覧のコンポーネント化
+     * ダブルクリックで再編集が出来るように ... done
+     * 削除メニュー                         ... done
+     * ソート
+     * Page
+     * Live-Search
+
+--------------------
+TODO
+--------------------
+
+ * ユーザ拡張の作り方 How To
+   * 英語版誰か書いて・・・
+
+ * API document の生成
+   * 自動生成用ドキュメントの属性の確認
+   * js 用の doxygen を調べる
+
+ * Restructured Document でドキュメント表記
+   * syntax highlight について調べる (pygments)
+
+ * git/hg でソース管理
+   * ローカルでやっているのを、google code か github へ
+
+ * 実行ファイルを叩くときに一時的に出るプロンプトの解消
+   * WSH.Run(cmdline, 7, true) を使えば非表示に出来るが、
+     コマンドからの出力を受け取れない。
+   * COMオブジェクトにする方法が良さそうだけど、
+     システムに登録する必要があったり・インストーラ作ったり
+     手間かかりそうなので敬遠。win32/C++の環境もないし。
+   * AIR/SilverLight/XUL Runner 辺りの検討。
+   * 結論: 当分見送り・・・
+
+ * 曲・コードの編集
+   * ユーザ・データと初期のデータを別ファイルにして管理。
+   
+ * エディタのインターフェース再考(TODO)
+   * リスト一覧をダブルクリックで再編集
+   * 同じタイトルの曲を多重登録できないように。（削除に困る）
+   * 右クリックでコンテキストメニューを出す。（削除の為）
+   * Edit 画面でキー変更・BPM/BPI変更して SETUP/ Chords 送信出来るように。
+   * Meter パラメータをデータに含める？ (もしくは、bars/bpi で求める)
+ 
+ * データ保存・削除（ファイル書き込み）の問題点
+   * ファイルベースなのでデータは全てオンメモリ
+   * データを一件更新するために、全てのデータを再書き込みしている（現状）
+   * データベースを導入すると、インストール・アンインストール等
+     手間が増えそうなので、これも敬遠。
+
+ * Twitter Widget 使ってみる
+   * widget が songbook.js ではエラー？単体だと動く(./share/test/twitter.hta)
+   * グローバル変数多用しているので、外部ライブラリ等使いたい場合は、要再設計。
+ 
+ * 他、何か外部 WEB サービスとの連携機能。
+   * JSONP, RPC 系使えるところがいい。サイト毎にパーサ作るの面倒。
+   
+ * XMLHttpRequest
+   * IE の bugs ? text/xml がないと responseXML が空になる
+   * XHR.overrideMimeType メソッドがない
+   * http://www.quirksmode.org/blog/archives/2005/09/xmlhttp_notes_r.html
+   * MSDOMを使って responseText をパース？
+   
+
+-----------------
+version 2.0 計画
+-----------------
+
+ アイデアのみです。多分やらない。
+ 
+ * NINJAM関連のデータを一括管理する総合ユーティリティ
+   * 再設計
+     * 他プラットフォーム対応 (Mac OSX,Linux)
+     * プラットフォームに依存しない部分のコード共有
+       * XUL,AIR 等の他 RIA 環境を検討
+   * reaper 対応
+     * NINJAM client/reaper との連携部分のライブラリ化
+       * 評価版のreaperではスクリプトが使えなかった。
+  
+ * 曲データの共有・管理
+   * Web サイトが必要, GAEの検討。
+
+ * Database 対応
+   * 候補
+     * HTML5 の Web Storage 待ち
+     * SQLite COM
+     * MDAC (Microsoft Data Access Components)
+     * flash storage/google gear
+     * ADO
+
+ * NINJAM Chat
+   * Font 変更
+     * 別プロセスの為、EM_SETCHARFORMATが効かなかった。
+       * 対策: DLL injection ?
+   * URL リンクの修正 (日本語がある時、リンク位置がずれる)
+   * チャット画面の同期プログラム (Hookで EM_SETSEL が取れる場合)
+

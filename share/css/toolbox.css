@@ -1,0 +1,24 @@
+/* minimam css settings */
+
+select#bpi, select#bpm {
+  width: 100px;
+}
+
+select#song {
+  width: 200px;
+}
+
+button {
+  cursor: hand;
+}
+
+
+#misc_field button {
+  display: none;
+}
+
+button#edit {
+  display: none;
+}
+
+
