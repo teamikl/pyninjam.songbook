@@ -1,4 +1,8 @@
 
+2010-05-24 tea <Ikkei.Shimomura@gmail.com>
+
+	* Setup mercurial repository
+	* チャット・ログ保存後に、ログを消去する設定を追加
 
 2010-05-11 tea <Ikkei.Shimomura@gmail.com>
 
