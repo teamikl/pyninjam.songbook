@@ -1,0 +1,100 @@
+<html>
+<head>
+<title id="title"></title>
+<!--
+  AppName: NINJAM SongBook Utility
+  Author: tea
+  Since: 2010/04/22
+  License: MIT license
+-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="./share/css/toolbox.css" type="text/css" rel="stylesheet" />
+
+<!-- DO NOT CHANGE THE LOADING ORDER, EACH FILES HAS DEPENDENCY -->
+<script type="text/javascript" src="./share/js/common.js"></script>
+<script type="text/javascript" src="./share/js/comutils.js"></script>
+<script type="text/javascript" src="./share/js/consts.js"></script>
+<script type="text/javascript" src="./share/js/domutils.js"></script>
+<script type="text/javascript" src="./share/js/song.js"></script>
+<script type="text/javascript" src="./user/conf/settings.js"></script>
+<script type="text/javascript" src="./user/data/songlist.js"></script>
+<script type="text/javascript" src="./share/js/datetime.js"></script>
+<script type="text/javascript" src="./share/js/clipboard.js"></script>
+<script type="text/javascript" src="./share/js/ninjam.js"></script>
+<script type="text/javascript" src="./share/js/events.js"></script>
+<script type="text/javascript" src="./share/js/api.js"></script>
+<script type="text/javascript" src="./user/conf/init.js"></script>
+<script type="text/javascript" src="./share/js/toolbox.js"></script>
+
+<hta:application
+  id="hta_app"
+  applicationname="NINJAM SongBook Utility"
+  border="thick"
+  borderstyle="normal"
+  caption="yes"
+  icon="./share/icon/app.ico"
+  innerborder="no"
+  maximizebutton="no"
+  minimizebutton="yes"
+  showintaskbar="yes"
+  singleinstance="yes"
+  sysmenu="yes"
+  version="1.12.3"
+  windowstate="normal"
+  scroll="no"
+  selection="no"
+  contextmenu="no"
+  navibable="no"
+/>
+
+</head>
+<body>
+  <form id="form">
+  <fieldset id="vote_field">
+    <legend id="vote_legend">Vote BPM/BPI</legend>
+    <span id="bpm_label">BPM:</span>
+    <select id="bpm"><option value=""></option></select>
+    <span id="bpi_label">BPI:</span>
+    <select id="bpi"><option value=""></option></select>
+    <button id="vote">!vote</button>
+    <button id="sync">sync</button>
+  </fieldset>
+  <fieldset id="song_field">
+    <legend id="song_legend">Select a song</legend>
+    <span id="song_label">Song:</span>
+    <select id="song"></select>
+    <select id="key"></select>
+    <button id="setup">Setup</button>
+    <button id="chords">Chords</button>
+    <button id="edit">Edit</button>
+  </fieldset>
+  <fieldset id="misc_field">
+    <legend id="misc_legend">Misc</legend>
+    <span id="theme_label">Theme:</span>
+    <select id="theme"></select>
+    <button id="save">Save</button>
+    <button id="clear">Clear</button>
+    <button id="clipboard">Clipboard</button>
+    <button id="random">Random</button>
+    <button id="reset">Reset</button>
+    <button id="ninjam">NINJAM</button>
+  </fieldset>
+  <fieldset id="option_field">
+    <legend id="option_legend">Options</legend>
+    <input type="checkbox" id="submit_on_change" />
+    <label for="submit_on_change" id="submit_on_change_label">Submit on Change</label>
+    <input type="checkbox" id="confirm_on_submit" />
+    <label for="confirm_on_submit" id="confirm_on_change_label">Confirm on Submit</label>
+    <input type="checkbox" id="lock_controls" />
+    <label for="lock_controls" id="lock_controls_label">Lock controls</label>
+  </fieldset>
+  </form>
+  <div id="links">
+    <a href="http://www.ninjam.com/">NINJAM</a> |
+    <a href="http://www.ninbot.com/">NinBot</a> |
+    <a href="http://ninjamers.ning.com/">Ninjamers</a> |
+    <a href="http://www.saxuet.qc.ca/TheSaxyPage/Standards_In_Bb.htm">SAXUET</a>
+  </div>
+</body>
+</html>

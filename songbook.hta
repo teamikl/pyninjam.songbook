@@ -1,0 +1,151 @@
+<html>
+  <head>
+      <title id="title"></title>
+<!--
+  Author: tea
+  Since: 2010/04/28
+  License: MIT license
+-->
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link rel="stylesheet" href="./share/css/tab.css" type="text/css" />
+<link rel="stylesheet" href="./share/css/songbook.css" type="text/css" />
+
+<!-- DO NOT CHANGE THE LOADING ORDER, EACH FILES HAS DEPENDENCY -->
+<script type="text/javascript" src="./share/js/consts.js"></script>
+<script type="text/javascript" src="./share/js/common.js"></script>
+<script type="text/javascript" src="./share/js/comutils.js"></script>
+<script type="text/javascript" src="./user/conf/settings.js"></script>
+<script type="text/javascript" src="./share/js/ninjam.js"></script>
+<script type="text/javascript" src="./share/js/domutils.js"></script>
+<script type="text/javascript" src="./share/js/clipboard.js"></script>
+<script type="text/javascript" src="./share/js/api.js"></script>
+<script type="text/javascript" src="./share/js/tab.js"></script>
+<script type="text/javascript" src="./share/js/song.js"></script>
+<script type="text/javascript" src="./user/data/songlist.js"></script>
+<script type="text/javascript" src="./share/js/feed.js"></script>
+<script type="text/javascript" src="./share/js/status.js"></script>
+<script type="text/javascript" src="./share/js/twitter.js"></script>
+<script type="text/javascript" src="./share/js/songbook.js"></script>
+
+<script type="text/javascript">
+    //<![CDATA[
+    window.resizeTo(800, 600)
+    window.moveTo(100, 100)
+    //]]>
+</script>
+<hta:application
+  id="hta_app"
+  applicationname="NINJAM SongBook Chords Edit Utility"
+  border="thick"
+  borderstyle="normal"
+  caption="yes"
+  icon="./share/icon/app.ico"
+  innerborder="no"
+  maximizebutton="no"
+  minimizebutton="yes"
+  showintaskbar="yes"
+  singleinstance="yes"
+  sysmenu="yes"
+  version="1.12.3"
+  windowstate="normal"
+  scroll="no"
+  selection="yes"
+  contextmenu="yes"
+  navibable="yes"
+  />
+  <script type="text/javascript">
+    register_event(window, 'onload', on_init)
+  </script>
+  <style type="text/css">
+  </style>
+  </head>
+<body>
+  <div id="main">
+    <ul id="tab_menu">
+      <li id="view_label"><a id="view_anchor" href="#view">View</a></li>
+      <li id="edit_label"><a id="edit_anchor"  href="#edit">Edit</a></li>
+      <li id="server_label"><a id="server_anchor"  href="#server">Server</a></li>
+      <li id="twitter_label"><a id="twitter_anchor"  href="#twitter">Twitter</a></li>
+      <li id="develop_label"><a id="develop_anchor"  href="#develop">Develop</a></li>
+    </ul>
+
+    <div id="view">
+    <p id="view-desc">Double-Click: Open Edit Song, Right-Click: Delete Song</p>
+    <table>
+      <tr>
+      <th id="t_title">Title</th>
+      <th id="t_bpmbpi">BPM/BPI</th>
+      <th id="t_key">Key</th>
+      <th id="t_chords">Chords</th>
+      </tr>
+      <tbody id="table_body"></tbody>
+    </table>
+    </div>
+    
+    <div id="edit">
+      <p><input type="text" id="song-title" /></p>
+      <form id="form">
+        <p>
+        <label id="meter_label" for="meter">Meter: </label><select id="meter"></select>
+        <label id="bpm_label" for="bpm">BPM: </label><select id="bpm"></select>
+        <label id="bpi_label" for="bpi">BPI: </label><select id="bpi"></select>
+        <label id="key_label" for="key">Key: </label><input type="text" id="key" />
+        </p>
+        <p>
+        <input type="text" id="chord1" />
+        <input type="text" id="chord2" />
+        <input type="text" id="chord3" />
+        <input type="text" id="chord4" />
+        </p>
+        <p>
+        <input type="text" id="chord5" />
+        <input type="text" id="chord6" />
+        <input type="text" id="chord7" />
+        <input type="text" id="chord8" />
+        </p>
+        <p>
+        <input type="text" id="chord9" />
+        <input type="text" id="chord10" />
+        <input type="text" id="chord11" />
+        <input type="text" id="chord12" />
+        </p>
+        <p>
+        <input type="text" id="chord13" />
+        <input type="text" id="chord14" />
+        <input type="text" id="chord15" />
+        <input type="text" id="chord16" />
+        </p>
+        <button id="save">Save</button>
+        <button id="reset">Reset</button>
+        <button id="share" disabled="disabled">Share</button>
+        <input type="text" id="delkey" disabled="disabled" />
+      </form>
+      
+      <ul id="edit-manual">
+        <li id="manual-desc-01">TAB key to move next field.</li>
+        <li id="manual-desc-02">Shift + TAB to back previous field.</li>
+      </ul>
+    </div>
+
+    <div id="server">
+      <div id="server_status"></div>
+      <ul id="server_menu">
+         <li><button id="toolbox">ToolBox</button></li>
+         <li><button id="status">Check Status</button></li>
+         <li><button id="stop">Stop</button></li>
+      </ul>
+    </div>
+    
+    <div id="twitter">
+    </div>
+    
+    <div id="develop">
+    </div>
+    
+  </div>
+</body>
+</html>
