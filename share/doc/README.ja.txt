@@ -1,64 +1,64 @@
 
 
 --------
-��
+環境
 --------
 
-    win32/ninjam client��p�ł��Breaper�ւ͑Ή����܂���B
+    win32/ninjam client専用です。reaperへは対応しません。
 
 
 --------
-�g����
+使い方
 --------
 
-    * toolbox.hta �t�@�C�����_�u���N���b�N���ċN���B
+    * toolbox.hta ファイルをダブルクリックして起動。
 
-        * !vote      ... �I������Ă��� BPM/BPI �𓊕[���܂��B
-        * sync       ... NINJAM ���猻�݂� BPM/BPI ���������ݒ肵�܂��B
-                         BPM/BPI �����݂̃��X�g�ɂȂ��ꍇ�͐ݒ肳��܂���B
-                         �� �ꎞ�I�ɊO���v���O�����N���ɂ��ʃE�B���h�E���\������܂��B
+        * !vote      ... 選択されている BPM/BPI を投票します。
+        * sync       ... NINJAM から現在の BPM/BPI を所得し設定します。
+                         BPM/BPI が現在のリストにない場合は設定されません。
+                         ※ 一時的に外部プログラム起動による別ウィンドウが表示されます。
 
-        * Setup      ... �I������Ă���Ȃ́ABPM/BPI/�R�[�h�𑗐M�B
-        * Chords     ... �I������Ă���Ȃ́A�R�[�h�݂̂𑗐M�B
+        * Setup      ... 選択されている曲の、BPM/BPI/コードを送信。
+        * Chords     ... 選択されている曲の、コードのみを送信。
 
-        * Theme      ... �X�^�C���V�[�g��؂�ւ��܂��B
-        * Clipboard  ... �N���b�v�{�[�h�̓��e���`���b�g�֔����B
-        * Random     ... �����_���ɋȂ�I���B
-        * Reset      ... �I�����ڂ�������Ԃɖ߂��܂��B
-        * NINJAM     ... NINJAM ���N���A��������NINJAM�̃E�B���h�E���A�N�e�B�u�ɂ��\�����܂��B
-                         �G���[���o��ꍇ�́A/user/conf/settings.js �� ninjam_exe ��
-                         ������NINJAM�̎��s�t�@�C���̏ꏊ���w�肵�Ă��������B
+        * Theme      ... スタイルシートを切り替えます。
+        * Clipboard  ... クリップボードの内容をチャットへ発言。
+        * Random     ... ランダムに曲を選択。
+        * Reset      ... 選択項目を初期状態に戻します。
+        * NINJAM     ... NINJAM を起動、もしくはNINJAMのウィンドウをアクティブにし表示します。
+                         エラーが出る場合は、/user/conf/settings.js の ninjam_exe に
+                         正しいNINJAMの実行ファイルの場所を指定してください。
 
-        * vote on change    ... �I�����ɑ����M�B
-        * confirm on submit ... ���M�O�Ɋm�F�_�C�A���O���o���B
-        * lock controls     ... �R���g���[�����A�N�e�B�u�ύX���܂��B
+        * vote on change    ... 選択時に即送信。
+        * confirm on submit ... 送信前に確認ダイアログを出す。
+        * lock controls     ... コントロールを非アクティブ変更します。
 
 
-    �듮��h�~�ׁ̈A"vote!", "Setup" �͈�x���M������A
-    BPM/BPI/�Ȃ�ύX���閘�A�ēx�N���b�N�o���܂���B
-    ���Z�b�g�{�^����AF5�L�[�ɂ��A�v���P�[�V�����̍ċN���ł������ł��܂��B
+    誤動作防止の為、"vote!", "Setup" は一度送信した後、
+    BPM/BPI/曲を変更する迄、再度クリック出来ません。
+    リセットボタンや、F5キーによるアプリケーションの再起動でも解除できます。
     
     
     * songbook.hta
     
-      * View �Ȉꗗ�\��
-        * Double click: �Ȃ̃f�[�^��ҏW
-        * Right click: �폜
+      * View 曲一覧表示
+        * Double click: 曲のデータを編集
+        * Right click: 削除
       
       * Edit
-        * �^�C�g���EBPM/BPI�E�L�[�E�R�[�h����͂��ĕۑ��o���܂��B
-        * ./user/tmp/ �ֈȑO�̃f�[�^�̓o�b�N�A�b�v����܂��B
-        * toolbox.hta �ŕύX��̃f�[�^��ǂݍ��ނɂ� F5 �ōēǂݍ��݂��Ă��������B
+        * タイトル・BPM/BPI・キー・コードを入力して保存出来ます。
+        * ./user/tmp/ へ以前のデータはバックアップされます。
+        * toolbox.hta で変更後のデータを読み込むには F5 で再読み込みしてください。
       
       * Server
-        * �T�[�o�̏�ԊĎ�
-        * �T�[�o�����_�u���N���b�N�ŁANINJAM�̐ڑ��_�C�A���O���J���܂�
+        * サーバの状態監視
+        * サーバ名をダブルクリックで、NINJAMの接続ダイアログが開きます
         
       * Develop
-        * �ŐV�łւ̃����N
+        * 最新版へのリンク
 
 ------------------
-�ݒ�/�J�X�^�}�C�Y
+設定/カスタマイズ
 ------------------
 
     * /share/doc/CUSTOM.ja.txt

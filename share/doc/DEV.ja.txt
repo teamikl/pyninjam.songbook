@@ -1,54 +1,54 @@
 ==================================================
- ninjam_chat.exe �𗘗p�����v���O�����̊J��
+ ninjam_chat.exe を利用したプログラムの開発
 ==================================================
 
 
-��{�I�ɁA�o���邱�Ƃ�
+基本的に、出来ることは
 
-�w win32/ninjam client �̃`���b�g�� ���������𑗂� �x
+『 win32/ninjam client のチャットへ 何か文字を送る 』
 
-���ꂾ���ł��B
+これだけです。
 
     
-    * /bin/ninjam_chat.exe "���b�Z�[�W"
+    * /bin/ninjam_chat.exe "メッセージ"
 
-        ninjam�� ���b�Z�[�W�𑗐M����R�}���h
+        ninjamへ メッセージを送信するコマンド
 
-        ���s��󔒂��܂ޒ����𑗂�ꍇ�A�_�u���N�H�[�g���ň͂��Ă��������B
+        改行や空白を含む長文を送る場合、ダブルクォート等で囲ってください。
 
 
     * /bin/ninjam_vote.bat [bpm|bpi] number
 
-        ninjam�� !vote�R�}���h�𑗐M����R�}���h
+        ninjamへ !voteコマンドを送信するコマンド
 
 
     * /share/dev/src/ninjam_chat.c
 
-        ��L�̃\�[�X�R�[�h�Btcc(tiny c compiler)�ŃR���p�C�����Ă��܂��B
+        上記のソースコード。tcc(tiny c compiler)でコンパイルしています。
 
 
 
-ninjam_chat.c ���
+ninjam_chat.c 解説
 -------------------
 
-    (1) Ninjam client �̃E�B���h�E��T���o���B
-        Ninjam client �͋N�����A�\�߃T�[�o�֐ڑ����Ă����ĉ������B
+    (1) Ninjam client のウィンドウを探し出す。
+        Ninjam client は起動し、予めサーバへ接続しておいて下さい。
 
-    (2) �`���b�g�̔������͗��̃R���g���[����T���o���B
+    (2) チャットの発言入力欄のコントロールを探し出す。
 
-    (3) ���͗��ɕ������ݒ肷��B
+    (3) 入力欄に文字列を設定する。
 
-    (4) ENTER�L�[���͂𑗂�A�����𑗐M����B
-
-
-
-    �R���p�C���ɂ� tcc (http://bellard.org/tcc/) �� Windows binary �𗘗p���A
-    "tcc.exe ninjam_chat.c -user32" �Ƃ��ăR���p�C�����Ă��܂��B
+    (4) ENTERキー入力を送り、発言を送信する。
 
 
 
+    コンパイルには tcc (http://bellard.org/tcc/) の Windows binary を利用し、
+    "tcc.exe ninjam_chat.c -user32" としてコンパイルしています。
 
-�X�N���v�g����R�}���h���Ăяo���B(JavaScript)
+
+
+
+スクリプトからコマンドを呼び出す。(JavaScript)
 --------------------------------------------------
 
   var WSH = new ActiveXObject("WScript.Shell")
@@ -66,24 +66,24 @@ ninjam_chat.c ���
   ninjam_chat('||: Am | D7 :||')
 
 
-  // �� ����
+  // ※ 注意
   // 
-  // �u���E�U���JavaScript����́A�Z�L�����e�B���̐����ɂ��
-  // �ʏ�A�O���v���O�����̌Ăяo���͍s���܂���B
+  // ブラウザ上のJavaScriptからは、セキュリティ等の制限により
+  // 通常、外部プログラムの呼び出しは行えません。
   // 
-  // JavaScript �ŊJ������ꍇ�́A
-  // WSH(Windows Scripting Host), HTA(HTML Application) ���̎d�g�݂𗘗p���Ă��������B
+  // JavaScript で開発する場合は、
+  // WSH(Windows Scripting Host), HTA(HTML Application) 等の仕組みを利用してください。
   //
 
 
-  // �� �⑫
+  // ※ 補足
   //
-  // WSH.Run �̑����� '7' �́A�O���v���O�������s���Ƀv�����v�g��\�������Ȃ����߂̃I�v�V�����B
+  // WSH.Run の第二引数 '7' は、外部プログラム実行時にプロンプトを表示させないためのオプション。
   //
 
 
 
-�T���v���E�X�N���v�g sayhi.js
+サンプル・スクリプト sayhi.js
 ---------------------------------------------------
 
   var WSH = new ActiveXObject("WScript.Shell")
@@ -92,20 +92,20 @@ ninjam_chat.c ���
 
 
 
-  �t�@�C���̓��e�́A��L��2�s�̂݁B
-  ninjam_chat.exe ���u���Ă���̂Ɠ����A/bin/ �f�B���N�g�����ɕۑ����܂��B
+  ファイルの内容は、上記の2行のみ。
+  ninjam_chat.exe が置いてあるのと同じ、/bin/ ディレクトリ内に保存します。
 
-  Ninjam client���N�����A�T�[�o�֐ڑ�������Ԃ�
-  sayhi.js ���_�u���N���b�N����� hi �Ƃ������b�Z�[�W�𑗐M���܂��B
+  Ninjam clientを起動し、サーバへ接続した状態で
+  sayhi.js をダブルクリックすると hi というメッセージを送信します。
 
-  ���� sayhi.js �t�@�C���̃V���[�g�J�b�g���쐬���A
-  �V���[�g�J�b�g�̃v���p�e�B�̃V���[�g�J�b�g�̏��Ńz�b�g�L�[��ݒ肷��ƁA
-  �ݒ肵���L�[�����������ŃX�N���v�g�����s�ł���悤�ɂȂ�܂��B
+  この sayhi.js ファイルのショートカットを作成し、
+  ショートカットのプロパティのショートカットの所でホットキーを設定すると、
+  設定したキーを押すだけでスクリプトを実行できるようになります。
 
 
-  ���Ȃ݂ɖl�́A
-  �E��̐l�����w�E���w�E���w��'h','i','(Enter)' �� �����E�X�g���[�N�Ń^�C�v���Ă��܂��B
-  ���t���r�؂�Ȃ��悤�ɁA�E��𗣂��Ă�Ԃ́A�����O�g�[�����Ō떂�����̂��|�C���g�ł� :)
+  ちなみに僕は、
+  右手の人差し指・中指・小指で'h','i','(Enter)' を ワン・ストロークでタイプしています。
+  演奏が途切れないように、右手を離してる間は、ロングトーン等で誤魔化すのがポイントです :)
 
 
 

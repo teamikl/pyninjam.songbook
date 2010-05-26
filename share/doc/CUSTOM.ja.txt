@@ -1,34 +1,34 @@
 =====================================================
-�J�X�^�}�C�Y�ɂ���
+カスタマイズについて
 =====================================================
 
 
 ---------------------------------
-�ݒ� (/user/conf/settings.js)
+設定 (/user/conf/settings.js)
 ---------------------------------
 
-BPM/BPI�̃��X�g�̐ݒ�B
-range�̓��e�́A40����200���͈̔͂�10���Ƃ����Ӗ��ł��B
+BPM/BPIのリストの設定。
+rangeの内容は、40から200迄の範囲で10ずつという意味です。
 
   var BPM = range(40, 200, 10)
   var BPI = [4,8,16,24,32,48,64]
 
 
-���P�[���̐ݒ�
-���{��̐l�� 'ja' �ɐݒ�B���j���[�̓��{�ꉻ�ƁA
-���{��T�C�g�ւ̃����N���\������܂��B
+ロケールの設定
+日本語の人は 'ja' に設定。メニューの日本語化と、
+日本語サイトへのリンクが表示されます。
 
   var user_locale = 'ja'
 
 
-"Misc", "Options" �̕\��
-�I�v�V���������g�킸�A�R���p�N�g�ȕ\���ɂ������ꍇ false ��ݒ肵�Ă��������B
+"Misc", "Options" の表示
+オプション等を使わず、コンパクトな表示にしたい場合 false を設定してください。
 
   var advanced_mode = ture
 
 
 
-�e�R���g���[���̏����l��ݒ肵�܂��B
+各コントロールの初期値を設定します。
 
   var default_vote_on_change_checked = false
   var defailt_confirm_on_submit_checked = true
@@ -36,36 +36,36 @@ range�̓��e�́A40����200���͈̔͂�10���Ƃ����Ӗ��ł��B
   var default_bpi = 16
   
 
-�N�����B�X�V���������Ƃ��ɒʒm���܂��B
+起動時。更新があったときに通知します。
 
   var alert_update = true
 
 
-�����N���N���b�N�������Afalse �ł�InternetExplorer �� url ���J���܂��B
-���i�g���Ă���u���E�U�𗘗p���ă����N���J�������ꍇ�� true �ɐݒ肵�܂��B
+リンクをクリックした時、false ではInternetExplorer で url を開きます。
+普段使っているブラウザを利用してリンクを開きたい場合は true に設定します。
 
   var use_your_default_browser = true
 
-�`���b�g�E���O��ۑ�����Ƃ��̊g���q�ƁA
-�ۑ���ANINJAM�̃`���b�g���O���������邩�ǂ����̐ݒ�
+チャット・ログを保存するときの拡張子と、
+保存後、NINJAMのチャットログを消去するかどうかの設定
 
   var chatlog_ext = ".log"
   var clear_on_char = true
 
 
-�����N�̕\���E��\���ƕ\���ʒu(true=top, false=bottom) ��ݒ肵�܂��B
+リンクの表示・非表示と表示位置(true=top, false=bottom) を設定します。
 
   var show_useful_site_links = true
   var show_links_on_top = true
   
-�e�[�}�̐ݒ�
-Theme�̗��p (true/false) �� /share/theme/ �ȉ��ɒu���� theme css �̖��O��񋓂��܂��B
+テーマの設定
+Themeの利用 (true/false) と /share/theme/ 以下に置いた theme css の名前を列挙します。
 
   var use_theme = true
   var theme_list = ['default', 'ninbot']
 
 
-Misc �{�^���̏����E�E�E�{�^���̏�����ύX�ł��܂��B
+Misc ボタンの順序・・・ボタンの順序を変更できます。
 
   var misc_buttons_order = [
     'random', 'clipboard', 'save', 'clear', 'reset', 'ninjam'
@@ -73,8 +73,8 @@ Misc �{�^���̏����E�E�E�{�^���̏�����ύX�ł��܂��B
 
 
   
-�E�B���h�E�̏����ʒu�E�T�C�Y
-�ʒu(x,y) ���}�C�i�X�l�̏ꍇ�́A�����ɕ\������܂��B
+ウィンドウの初期位置・サイズ
+位置(x,y) がマイナス値の場合は、中央に表示されます。
 
   var window_x = -1
   var window_y = -1
@@ -82,65 +82,65 @@ Misc �{�^���̏����E�E�E�{�^���̏�����ύX�ł��܂��B
   var window_height = 200
 
 
-�E�B���h�E�̃^�C�g��
+ウィンドウのタイトル
 
   var window_title = 'your title here'
 
 
 -----------------------------------------
-�ȃ��X�g�f�[�^�̃J�X�^�}�C�Y (/user/data/songlist.js)
+曲リストデータのカスタマイズ (/user/data/songlist.js)
 -----------------------------------------
 
-[�^�C�g��, BPM, BPI, �R�[�h] ���琬�郊�X�g�ł��B
-�R�[�h�����ɂ� JavaScript �� Song �I�u�W�F�N�g�����p�ł��܂��B
+[タイトル, BPM, BPI, コード] から成るリストです。
+コード部分には JavaScript の Song オブジェクトが利用できます。
 
-��:
+例:
 
   new Song('Dm', 'G7', 'C', 'A7').key('C')
 
 
-�ݒ肵���l�� 0 �������� null �l�̎��A�ύX�E���b�Z�[�W�̑��M�͔������܂���B
+設定した値が 0 もしくは null 値の時、変更・メッセージの送信は発生しません。
 
-  ['default', 120, 16, null]      ... BPM/BPI�ύX�̂݁B�R�[�h�͒ʒm���Ȃ��B
-  ['12 bars blues', 0, 48, null]  ... BPI �ύX�̂݁B
-
-
----------------------------------
-�X�^�C���̃J�X�^�}�C�Y
----------------------------------
-
-
-  �V�����e�[�}���쐬����ꍇ
-  /share/theme/theme.template.css ���R�s�[���ď����n�߂��܂��B
-
-
-  �쐬�����e�[�}�́A�ݒ�t�@�C���� theme_dir �Őݒ肵���t�H���_�֒u���Ă��������B
-
-  �o�^�́Atheme_list �֍쐬�����e�[�}�̖��O(�t�@�C�����̊g���q�Ȃ�)��ǉ����܂��B
-  ��ԍŏ��̂��̂��f�t�H���g�̃e�[�}�ɂȂ�܂��B
+  ['default', 120, 16, null]      ... BPM/BPI変更のみ。コードは通知しない。
+  ['12 bars blues', 0, 48, null]  ... BPI 変更のみ。
 
 
 ---------------------------------
-���{�ꉻ (/share/locale/ja.js)
+スタイルのカスタマイズ
+---------------------------------
+
+
+  新しいテーマを作成する場合
+  /share/theme/theme.template.css をコピーして書き始められます。
+
+
+  作成したテーマは、設定ファイルの theme_dir で設定したフォルダへ置いてください。
+
+  登録は、theme_list へ作成したテーマの名前(ファイル名の拡張子なし)を追加します。
+  一番最初のものがデフォルトのテーマになります。
+
+
+---------------------------------
+日本語化 (/share/locale/ja.js)
 ---------------------------------
 
 
 
 
 ---------------------------------
-�@�\�̃J�X�^�}�C�Y (/user/conf/init.js)
+機能のカスタマイズ (/user/conf/init.js)
 ---------------------------------
 
-  TODO: ���x����
+  TODO: 今度書く
 
-  �ǉ��œǂݍ��܂��A���[�U�g�� JS/CSS ���L�q����B
+  追加で読み込まれる、ユーザ拡張 JS/CSS を記述する。
 
 
 ---------------------------------
-�⑫����
+補足説明
 ---------------------------------
 
-  * �ݒ�t�@�C������ύX������́AF5 �L�[���������Ƃōēǂݍ��݂��o���܂��B
+  * 設定ファイル等を変更した後は、F5 キーを押すことで再読み込みが出来ます。
 
 
 __EOF__
