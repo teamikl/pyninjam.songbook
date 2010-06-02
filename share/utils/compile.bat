@@ -1,0 +1,1 @@
+C:\Users\developper\Desktop\home\opt\tcc-0.9.25-win32-bin\tcc\tcc.exe %* -luser32

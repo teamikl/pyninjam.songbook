@@ -1,0 +1,25 @@
+================
+TCC Manual
+================
+
+  > tcc -run a.c args
+  
+  > tcc a.c -o a.exe
+  
+  > tcc -c a.c -o a.o
+
+
+# http://linux.die.net/man/1/tcc
+
+
+--------------------------
+NINJAM Client RichEdit20A
+--------------------------
+
+  * Local Hook from an external process
+  * attach thread
+
+  * Context menu
+  * URL link
+  * Color
+  * Change font
