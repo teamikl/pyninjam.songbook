@@ -4,7 +4,7 @@ import os
 import sys
 from zipfile import ZipFile, ZIP_DEFLATED
 from common import rootpath, walk_filer_by_extensions
-from settings import ALL_EXTENSIONS
+from settings import ALL_EXTENSIONS, IGNORE_PATH
 
 def main(zippath):
     basedir = './songbook'
@@ -12,6 +12,8 @@ def main(zippath):
     z = ZipFile(zippath, 'w', ZIP_DEFLATED)    
 
     for filepath in walk_filer_by_extensions(rootpath, ALL_EXTENSIONS):
+        if IGNORE_PATH in filepath:
+            continue
         arcname = filepath.replace(rootpath, '')
         arcpath = os.path.join(basedir, arcname).replace('\\', '/')
         z.write(filepath, arcname)
@@ -26,6 +28,4 @@ if __name__ == '__main__':
         sys.exit(0)
 
     main(sys.argv[1])
-    
-        
     
