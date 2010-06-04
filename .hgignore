@@ -1,0 +1,6 @@
+syntax: glob
+
+*.exe
+*.log
+*.tmp
+*.pyc
