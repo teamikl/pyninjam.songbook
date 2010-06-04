@@ -8,7 +8,7 @@ var BPI = range(4, 64, 4)
 
 
 // Set your locale ("en", "ja", or null)
-var user_locale = null
+var user_locale = "ja"
 
 // Enable Advanced options mode.
 var advanced_mode = true

@@ -29,7 +29,7 @@ typedef struct _charformat {
 
 char tohex8(char c)
 {
-  // ASCI code only.
+  // ASCII code only.
   if (57 >= c && c >= 48)
     return c - 48;
   if (102 >= c && c >= 97)
