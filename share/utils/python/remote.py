@@ -15,6 +15,14 @@ user32 = ctypes.windll.user32
 # TODO: separate the abstract remote HWND object
 
 
+def RGB(red, green, blue):
+    # RGB(r,g,b) -> COLORREF
+    assert 0xff >= red >= 0
+    assert 0xff >= green >= 0
+    assert 0xff >= blue >= 0
+    return (red & 0xff) | ((green & 0xff) << 8) | ((blue & 0xff) << 16)
+
+
 class RemoteNinjam(object):
 
     dynamic = True
