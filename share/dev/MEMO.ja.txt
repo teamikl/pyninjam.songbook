@@ -15,11 +15,10 @@
 Schedule
 --------------------
 
- * v1.14
-   * サーバ状態監視のオプション（更新時間）等の設定
+ * 未定
    * Ninjammerの状態監視
 
- * v1.13
+ * 未定
    * songbook.hta 一覧のコンポーネント化
      * ダブルクリックで再編集が出来るように ... done
      * 削除メニュー                         ... done
@@ -40,9 +39,6 @@ TODO
 
  * Restructured Document でドキュメント表記
    * syntax highlight について調べる (pygments)
-
- * git/hg でソース管理
-   * ローカルでやっているのを、google code か github へ
 
  * 実行ファイルを叩くときに一時的に出るプロンプトの解消
    * WSH.Run(cmdline, 7, true) を使えば非表示に出来るが、
@@ -110,9 +106,6 @@ version 2.0 計画
      * ADO
 
  * NINJAM Chat
-   * Font 変更
-     * 別プロセスの為、EM_SETCHARFORMATが効かなかった。
-       * 対策: DLL injection ?
    * URL リンクの修正 (日本語がある時、リンク位置がずれる)
    * チャット画面の同期プログラム (Hookで EM_SETSEL が取れる場合)
 
