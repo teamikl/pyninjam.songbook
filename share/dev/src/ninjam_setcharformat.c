@@ -8,6 +8,9 @@
 
 #include "ninjam_common.h"
 
+/**
+ * copy header from richedit.h
+ */
 #define EM_SETSEL        0x00B1
 #define EM_SETBKGNDCOLOR 0x0443
 #define EM_SETCHARFORMAT 0x0444
@@ -26,8 +29,15 @@ typedef struct _charformat {
   TCHAR szFaceName[LF_FACESIZE];
 } CHARFORMAT;
 
+/**
+ * macro to convert nuber string or color string to COLORREF
+ *
+ * [0-9]*           -> atoi
+ * \#[0-9a-fA-F]{6} -> str2color
+ */
 
-char tohex8(char c)
+#if 0
+inline char tohex8(char c)
 {
   // ASCII code only.
   if (57 >= c && c >= 48)
@@ -38,18 +48,19 @@ char tohex8(char c)
     return c - 65 + 10;
   return 0;
 }
+#endif
 
+#define tohex8(c) (( 57 >= (c) && (c) >= 48) ? ((c)-48) :    \
+                   (102 >= (c) && (c) >= 97) ? ((c)-97+10) : \
+                   ( 70 >= (c) && (c) >= 65) ? ((c)-65+10) : 0)
 #define tohex16(x) ((tohex8((x)[1]) << 4) | tohex8((x)[0]))
+#define str2color(x) (RGB(tohex16(&(x)[0]),tohex16(&(x)[2]),tohex16(&(x)[4])))
+#define toColor(x) (((x)[0] == '#') ? str2color(&(x)[1]) : atoi(x))
 
-COLORREF str2color(char *x)
-{
-  if (strlen(x) != 7)
-    return 0;
-  return RGB(tohex16(&x[1]), tohex16(&x[3]), tohex16(&x[5]));
-}
 
-#define toColor(x) (((x)[0] == '#') ? str2color(x) : atoi(x))
-
+/**
+ * usage: fgcolor bgcolor font-size font-face
+ */
 
 int main(int argc, char **argv)
 {
