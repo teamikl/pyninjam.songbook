@@ -34,7 +34,19 @@ rangeの内容は、40から200迄の範囲で10ずつという意味です。
   var defailt_confirm_on_submit_checked = true
   var default_bpm = 120
   var default_bpi = 16
-  
+
+
+チャットのフォントサイズ・文字色・背景色等の設定（起動時に反映）
+
+var chat_customize = true
+var chat_fontsize = 20
+var chat_fontface = "Arial" // "MS P Gothic" and so on
+var chat_bgcolor = RGB(0xff, 0xff, 0xff) // or "#FFFFFF"
+var chat_fgcolor = RGB(0x00, 0x00, 0x00) // or "#000000"
+
+起動時に反映するため、toolbox.hta 起動前に NINJAM が起動していねければなりません。
+後から反映させる場合は、NINJAMを立ち上げてから、toolbox.hta で F5 を押すことで反映できます。
+
 
 起動時。更新があったときに通知します。
 

@@ -1,4 +1,8 @@
 
+2010-06-04 tea <Ikkei.Shimomura@gmail.com>
+
+	* チャットのフォント・サイズ・色等の変更
+
 2010-05-24 tea <Ikkei.Shimomura@gmail.com>
 
 	* Setup mercurial repository

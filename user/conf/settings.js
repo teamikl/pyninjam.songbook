@@ -8,7 +8,7 @@ var BPI = range(4, 64, 4)
 
 
 // Set your locale ("en", "ja", or null)
-var user_locale = "ja"
+var user_locale = null
 
 // Enable Advanced options mode.
 var advanced_mode = true
@@ -32,6 +32,13 @@ var default_confirm_on_submit_checked = true
 
 var default_bpm = 120
 var default_bpi = 16
+
+// Customize chat field.
+var chat_customize = false // or true
+var chat_fontsize = 20
+var chat_fontface = "Arial" // "MS P Gothic" and so on
+var chat_bgcolor = RGB(0xEE, 0xEE, 0xFF) // or "#FFFFFF"
+var chat_fgcolor = RGB(0x77, 0x77, 0xFF) // or "#000000"
 
 // status check interval
 var status_check_interval_min = 3
@@ -85,6 +92,7 @@ var active_command = 'bin\\ninjam_active.exe'
 var connect_command = 'bin\\ninjam_connect.exe'
 var getchatlog_command = 'bin\\ninjam_getchatlog.exe'
 var getmetronome_command = 'bin\\ninjam_getmetronome.exe'
+var setcharformat_command = 'bin\\ninjam_setcharformat.exe'
 
 var debug_mode = false
 var develop_mode = true

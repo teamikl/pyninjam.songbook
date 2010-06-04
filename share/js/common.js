@@ -108,3 +108,12 @@ function hook_link(url)
     return false
   }
 }
+
+
+/**
+ * RGB(red,green,blue) -> COLORREF
+ */
+function RGB(red, green, blue)
+{
+  return (red & 0xff) | ((green & 0xff) << 8) | ((blue & 0xff) << 16)
+}

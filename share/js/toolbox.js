@@ -140,6 +140,10 @@ function init()
         register_event(link, 'onclick', hook_link(link.href))
     })
   }
+  
+  if (chat_customize) {
+    ninjam_setcharformat(chat_fgcolor, chat_bgcolor, chat_fontsize, chat_fontface)
+  }
 }
 
 

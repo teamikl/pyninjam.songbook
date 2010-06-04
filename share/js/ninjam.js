@@ -26,6 +26,12 @@ function ninjam_getmetronome()
   return WSH.Exec(getmetronome_command).StdOut.ReadAll().replace(/\n/m, '')
 }
 
+function ninjam_setcharformat(fgcolor, bgcolor, fontsize, fontface)
+{
+  var argv = map(function(x){ return '"'+x+'"' }, [fgcolor, bgcolor, fontsize, fontface])
+  return run_program(setcharformat_command + ' ' + argv.join(' '))
+}
+
 function ninjam_active()
 {
   // First Run does not OpenIcon from minimized state.
