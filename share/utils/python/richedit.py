@@ -2,7 +2,7 @@
 from ctypes import Structure, c_char, sizeof
 from ctypes.wintypes import UINT,DWORD,LONG,COLORREF,BYTE,WCHAR
 
-# ASCI or UNICODE ?
+# ANSI or UNICODE ?
 TCHAR = c_char
 
 SCF_DEFAULT   = 0x0000

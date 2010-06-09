@@ -228,7 +228,7 @@ function on_clipboard(e)
 function on_random(e)
 {
   var song_select = $('song')
-  song_select.value = randint(0, $('song').length  )
+  song_select.value = randint(0, $('song').length)
   on_song()
 }
 
@@ -250,7 +250,7 @@ function on_save(e)
   var savefile = log_dir + getTimestamp() + chatlog_ext
 
   ninjam_savechatlog(savefile)
-  
+
   if (clear_on_save)
     on_clear()
 }
