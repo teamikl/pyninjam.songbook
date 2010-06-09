@@ -33,6 +33,7 @@ var ja_locale = {
   'option_legend': 'オプション',
   'submit_on_change_label': '変更時に送信',
   'confirm_on_change_label': '送信前に確認',
+  'clear_on_save_label': '保存時に消去',
   'lock_controls_label': 'ロック'
 }
 

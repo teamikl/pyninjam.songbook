@@ -15,6 +15,7 @@ function reset_form()
   // Set up default values (see /user/conf/settings.js)
   $('submit_on_change').checked = default_submit_on_change_checked
   $('confirm_on_submit').checked = default_confirm_on_submit_checked
+  $('clear_on_save').checked = default_clear_on_save_checked
   $('lock_controls').checked = false
   $('song').selectedIndex = 0
   $('theme').selectedIndex = 0

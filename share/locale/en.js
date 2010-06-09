@@ -24,8 +24,9 @@ var en_locale = {
   'reset': 'Reset',
   
   'option_legend': 'Options',
-  'submit_on_change_label': 'Submit on Change',   
-  'confirm_on_change_label': 'Confirm on Submit',   
+  'submit_on_change_label': 'Submit on Change',
+  'confirm_on_change_label': 'Confirm on Submit',
+  'clear_on_save_label': 'Clear on Save',
   'lock_controls_label': 'Lock controls'  
 }
 

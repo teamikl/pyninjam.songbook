@@ -251,7 +251,7 @@ function on_save(e)
 
   ninjam_savechatlog(savefile)
 
-  if (clear_on_save)
+  if ($('clear_on_save').checked)
     on_clear()
 }
 

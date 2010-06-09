@@ -23,12 +23,10 @@ var songlist_js = "./user/data/songlist.js"
 // File extension for chat log files
 var chatlog_ext = ".log"
 
-// Clear chat log on save the chat log
-var clear_on_save = true
-
-// default values for submit_on_change and confirm_on_change
+// default values for submit_on_change, confirm_on_change and clear_on_save
 var default_submit_on_change_checked = true
 var default_confirm_on_submit_checked = true
+var default_clear_on_save_checked = true
 
 var default_bpm = 120
 var default_bpi = 16
