@@ -274,8 +274,8 @@ function on_ninjam(e)
 function on_lock_controls(e)
 {
   var state = $('lock_controls').checked
-  var controls = 'bpm bpi vote sync song setup chords key clear reset random clipboard save ninjam submit_on_change theme confirm_on_submit'.split(' ')
+  var controls = 'bpm bpi vote sync song setup chords key clear reset random clipboard save ninjam submit_on_change theme confirm_on_submit clear_on_save'.split(' ')
   foreach(controls, function(id) {
-    $(id).disabled = state  
+    $(id).disabled = state
   })
 }
