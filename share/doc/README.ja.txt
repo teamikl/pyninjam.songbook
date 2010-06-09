@@ -31,6 +31,7 @@
 
         * vote on change    ... 選択時に即送信。
         * confirm on submit ... 送信前に確認ダイアログを出す。
+        * clear on save     ... 保存後、NINJAMのチャットログを消去する。
         * lock controls     ... コントロールを非アクティブ変更します。
 
 

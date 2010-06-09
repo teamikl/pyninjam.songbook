@@ -32,6 +32,7 @@ rangeの内容は、40から200迄の範囲で10ずつという意味です。
 
   var default_vote_on_change_checked = false
   var defailt_confirm_on_submit_checked = true
+  var default_clear_on_save_checked = true
   var default_bpm = 120
   var default_bpi = 16
 
@@ -58,11 +59,9 @@ var chat_fgcolor = RGB(0x00, 0x00, 0x00) // or "#000000"
 
   var use_your_default_browser = true
 
-チャット・ログを保存するときの拡張子と、
-保存後、NINJAMのチャットログを消去するかどうかの設定
+チャット・ログを保存するときの拡張子
 
   var chatlog_ext = ".log"
-  var clear_on_char = true
 
 
 リンクの表示・非表示と表示位置(true=top, false=bottom) を設定します。
