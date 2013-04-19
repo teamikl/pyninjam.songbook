@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 	HWND textarea;
 	CHARFORMAT cf;
 	CHARFORMAT *vcf;
-	
+
 	DWORD dwProcessId = 0;
 	HANDLE hProcess;
 
@@ -47,18 +47,18 @@ int main(int argc, char **argv)
 	cf.crTextColor = RGB(0x00, 0x00, 0x00);
 	cf.yHeight = 18 * 20;
 	strcpy(cf.szFaceName, "MS Gothic");
-	
+
 	SendMessage(textarea, EM_SETBKGNDCOLOR, 0, RGB(0xee, 0xee, 0xff));
-	
+
 	GetWindowThreadProcessId(textarea, &dwProcessId);
 	hProcess = OpenProcess(PROCESS_VM_OPERATION | PROCESS_VM_READ | PROCESS_VM_WRITE, FALSE, dwProcessId);
 	if (hProcess) {
 		vcf = (CHARFORMAT *)VirtualAllocEx(hProcess, NULL, sizeof(CHARFORMAT), MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
 		WriteProcessMemory(hProcess, vcf, &cf, sizeof(CHARFORMAT), NULL);
-		
+
 		// SendMessage(textarea, EM_SETSEL, 0, -1); // seem work
 		SendMessage(textarea, EM_SETCHARFORMAT, 4, (LPARAM)vcf);
-		
+
 		// XXX: Really can I release the memory ?
 		VirtualFreeEx(hProcess, vcf, 0, MEM_RELEASE);
 		CloseHandle(hProcess);

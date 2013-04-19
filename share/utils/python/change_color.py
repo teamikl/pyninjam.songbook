@@ -11,6 +11,7 @@ if __name__ == '__main__':
             format.dwMask = CFM_COLOR |CFM_SIZE
             format.crTextColor = RGB(0xFF,0x00,0x00)
             format.yHeight = 20
+
             ninjam.setChatTextFormat(format)
 
         # bg-color

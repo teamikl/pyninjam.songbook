@@ -31,8 +31,9 @@ def _in_process(hwnd):
 
 @contextmanager
 def _virtual(hProcess, data, size):
-    # XXX: 
+    # XXX:
     flags = win32con.MEM_RESERVE | win32con.MEM_COMMIT
+    print hProcess, 0, size, flags, win32con.PAGE_READWRITE
     v = kernel32.VirtualAllocEx(hProcess, 0, size, flags, win32con.PAGE_READWRITE)
     try:
         print hProcess, v, data, size
@@ -64,7 +65,7 @@ class RemoteNinjam(object):
         self.hwnd = 0
         self.textarea = 0
         self.textinput = 0
-        
+
         if not self.dynamic:
             self.initialize()
 
@@ -127,6 +128,7 @@ class RemoteNinjam(object):
     def say(self, line):
         with self.handle(self.textinput) as hwnd:
             win32gui.SendMessage(hwnd, win32con.WM_SETTEXT, 0, line)
+            # TODO: PostMessage
             win32gui.SendMessage(hwnd, win32con.WM_CHAR, win32con.VK_RETURN, 0)
             print "say", line
 
@@ -139,7 +141,7 @@ class RemoteNinjam(object):
     def setChatTextFormat(self, format):
         data = ctypes.addressof(format)
         size = size_of_charformat
-        
+
         with self.handle(self.textarea) as hwnd:
             with in_target_process(hwnd, data, size) as param:
-                win32gui.SendMessage(hwnd, EM_SETCHARFORMAT, 4, param)
+                win32gui.SendMessage(hwnd, EM_SETCHARFORMAT, SCF_ALL, param)
