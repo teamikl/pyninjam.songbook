@@ -35,10 +35,25 @@ int main(int argc, char **argv)
 	DWORD dwProcessId = 0;
 	HANDLE hProcess;
 
+#ifdef REAPER
+    parent = FindWindow("REAPERwnd", 0);
+    if (!parent) return 1; /* Reaper is not running */
+
+    parent = FindWindow(0, "ReaNINJAM v0.13");
+    if (!parent) return 1; /* ReaNINJAM dialog is not opened */
+
+	textarea = FindWindowEx(parent, 0, "RichEditChild", 0);
+	if (!textarea) return 1;
+
+#else /* NINJAM */
 	parent = FindWindow("NINJAMwnd", 0);
-	if (!parent) return 1;
+	if (!parent) return 1; /* NINJAM is not running */
+
 	textarea = FindWindowEx(parent, 0, "RichEdit20A", 0);
 	if (!textarea) return 1;
+
+#endif
+
 
 	memset(&cf, 0, sizeof(cf));
 	cf.cbSize = sizeof(cf);
@@ -56,10 +71,9 @@ int main(int argc, char **argv)
 		vcf = (CHARFORMAT *)VirtualAllocEx(hProcess, NULL, sizeof(CHARFORMAT), MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
 		WriteProcessMemory(hProcess, vcf, &cf, sizeof(CHARFORMAT), NULL);
 
-		// SendMessage(textarea, EM_SETSEL, 0, -1); // seem work
+		// SendMessage(textarea, EM_SETSEL, 0, -1);
 		SendMessage(textarea, EM_SETCHARFORMAT, 4, (LPARAM)vcf);
 
-		// XXX: Really can I release the memory ?
 		VirtualFreeEx(hProcess, vcf, 0, MEM_RELEASE);
 		CloseHandle(hProcess);
 	}
