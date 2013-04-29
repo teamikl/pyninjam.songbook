@@ -34,7 +34,7 @@ var default_bpi = 16
 // Customize chat field.
 var chat_customize = false // or true
 var chat_fontsize = 20
-var chat_fontface = "Arial" // "MS P Gothic" and so on
+var chat_fontface = "Meiryo" // "MS P Gothic" and so on
 var chat_bgcolor = RGB(0xEE, 0xEE, 0xFF) // or "#FFFFFF"
 var chat_fgcolor = RGB(0x77, 0x77, 0xFF) // or "#000000"
 
@@ -80,8 +80,9 @@ var window_height = 260
 var window_title = null
 
 
-// Path to ninjam.exe
+// Path to ninjam.exe / reaper.exe
 var ninjam_exe = 'c:\\Program Files\\NINJAM\\ninjam.exe'
+var reaper_exe = 'c:\\Program Files\\Reaper\\reaper.exe'
 
 
 // Path to ninjam command line utilities. (no need to edit here)
