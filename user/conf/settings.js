@@ -73,7 +73,7 @@ var misc_buttons_order = [
 // Set window_x or window_y negative for centering.
 var window_x = -1
 var window_y = -1
-var window_width = 580
+var window_width = 600
 var window_height = 260
 
 // If you want set another title.
