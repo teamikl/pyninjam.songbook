@@ -36,15 +36,20 @@ function ninjam_active()
 {
   // First Run does not OpenIcon from minimized state.
   // So I called it twice with different parameters.
-  
+
   var state = WSH.Run(active_command, 7, true)
-  
+
   if (state == 1)
     return WSH.Exec(ninjam_exe)
   else
     return WSH.Exec(active_command)
 }
 
+function reaper_active()
+{
+  // TODO: like ninjam_active()
+  WSH.Exec(reaper_exe)
+}
 
 function ninjam_connect(server)
 {

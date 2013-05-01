@@ -9,12 +9,12 @@ var en_locale = {
   'vote_legend': 'Vote BPM/BPI',
   'vote': '!vote',
   'sync': 'sync',
-  
+
   'song_legend': 'Select a song',
   'setup': 'Setup',
   'chords': 'Chords',
   'song_label': 'Song: ',
-  
+
   'misc_legend': 'Misc',
   'theme_label': 'Theme: ',
   'random': 'Random',
@@ -22,12 +22,16 @@ var en_locale = {
   'clipboard': 'Clipboard',
   'save': 'Save',
   'reset': 'Reset',
-  
+
   'option_legend': 'Options',
   'submit_on_change_label': 'Submit on Change',
   'confirm_on_change_label': 'Confirm on Submit',
   'clear_on_save_label': 'Clear on Save',
-  'lock_controls_label': 'Lock controls'  
+  'lock_controls_label': 'Lock controls',
+  'topmost_label': 'Always on Top',
+  'client_label': 'Client',
+
+  'chat_legend': '発言'
 }
 
 var en_locale2 = {
@@ -49,7 +53,7 @@ var en_locale2 = {
   'save':'Save',
   'reset':'Reset',
   'share':'Share',
-  'status': 'Check Status',
+  'status':'Check Status',
   'stop':'Stop'
 }
 

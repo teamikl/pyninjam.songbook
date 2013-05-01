@@ -6,6 +6,8 @@
 var BPM = range(40, 200, 10)
 var BPI = range(4, 64, 4)
 
+// default client 0 "NINJAM" or 1 "ReaNINJAM"
+var default_client = 0
 
 // Set your locale ("en", "ja", or null)
 var user_locale = "ja"
@@ -27,9 +29,14 @@ var chatlog_ext = ".log"
 var default_submit_on_change_checked = true
 var default_confirm_on_submit_checked = true
 var default_clear_on_save_checked = true
+var default_topmost = true // Always on Top
 
 var default_bpm = 120
 var default_bpi = 16
+
+// transparency window alpha range(0..255)
+var use_transparency = false
+var transparent_alpha = 120
 
 // Customize chat field.
 var chat_customize = false // or true
@@ -73,8 +80,8 @@ var misc_buttons_order = [
 // Set window_x or window_y negative for centering.
 var window_x = -1
 var window_y = -1
-var window_width = 600
-var window_height = 260
+var window_width = 640
+var window_height = 300
 
 // If you want set another title.
 var window_title = null
@@ -92,6 +99,8 @@ var connect_command = 'bin\\ninjam_connect.exe'
 var getchatlog_command = 'bin\\ninjam_getchatlog.exe'
 var getmetronome_command = 'bin\\ninjam_getmetronome.exe'
 var setcharformat_command = 'bin\\ninjam_setcharformat.exe'
+var topmost_command = 'bin\\topmost.exe'
+var setalpha_command = 'bin\\setalpha.exe'
 
 var debug_mode = false
 var develop_mode = true

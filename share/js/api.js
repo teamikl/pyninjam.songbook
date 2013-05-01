@@ -17,11 +17,14 @@ function install_locale(doc, locale)
 
 function append_sites(sites)
 {
+  var links = $('links');
+  if (!links) return;
+
   foreach(sites, function(site){
-    var link = document.createElement('a')
-    link.href = 'http://crasher.orz.hm/ninjam'
-    link.innerText = 'crasher.orz.hm:8888'
-    $('links').appendChild(document.createTextNode('| '))
-    $('links').appendChild(link)
+    var anchor = document.createElement('a')
+    anchor.href = site[0]
+    anchor.innerText = site[1]
+    links.appendChild(document.createTextNode('| '))
+    links.appendChild(anchor)
   })
 }

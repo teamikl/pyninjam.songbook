@@ -53,10 +53,10 @@ function send_song(bpm, bpi, idx, key)
   var song = SONG[idx]
   var name = song[0]
   var chords = transpose_chords(song[3], key)
-  
+
   if (bpm) send_vote('bpm', bpm)
   if (bpi) send_vote('bpi', bpi)
-  if (chords) send_chat(name + "\n" + chords)    
+  if (chords) send_chat(name + "\n" + chords)
 }
 
 function send_chords(idx, key)
@@ -64,7 +64,7 @@ function send_chords(idx, key)
   var song = SONG[idx]
   var name = song[0]
   var chords = transpose_chords(song[3], key)
-  
+
   if (chords) send_chat(name + "\n" + chords)
 }
 
@@ -72,12 +72,12 @@ function send_chords(idx, key)
 
 var to_minor = function(x){ return x?x+"m":'' }
 var to_major = function(x){ return x.replace('m', '') }
-  
+
 function _set_keys(func)
 {
   foreach_options($('key'), function(option){
     option.text = map(func, option.text.split('/')).join('/')
-  })  
+  })
 }
 
 function set_minor_key_sets()
@@ -118,7 +118,7 @@ function on_bpm(e)
 {
   if ($('submit_on_change').checked)
     send_vote('bpm', $('bpm').value)
-    
+
   $('vote').disabled = false
   $('setup').disabled = false
 }
@@ -127,7 +127,7 @@ function on_bpi(e)
 {
   if ($('submit_on_change').checked)
     send_vote('bpi', $('bpi').value)
-    
+
   $('vote').disabled = false
   $('setup').disabled = false
 }
@@ -135,7 +135,7 @@ function on_bpi(e)
 function on_setup(e)
 {
   send_song($('bpm').value, $('bpi').value, $('song').value, $('key').value)
-  
+
   $('setup').disabled = true
 }
 
@@ -157,7 +157,7 @@ function on_key(e)
   if ($('submit_on_change').checked)
     on_setup()
 
-  $('setup').disabled = false  
+  $('setup').disabled = false
 }
 
 function on_song(e)
@@ -166,7 +166,7 @@ function on_song(e)
   var bpm = row[1]
   var bpi = row[2]
   var chords = row[3]
-  
+
   if (chords && chords.original_key) {
     if (is_minor_key(chords.original_key))
       set_minor_key_sets($('key'))
@@ -177,7 +177,7 @@ function on_song(e)
   else {
     $('key').selectedIndex = 0
   }
-  
+
   set_select_option($('bpm'), bpm)
   set_select_option($('bpi'), bpi)
 
@@ -192,10 +192,10 @@ function on_vote(e)
 {
   var bpm = $('bpm').value
   var bpi = $('bpi').value
-  
+
   if (bpm) send_vote('bpm', bpm)
   if (bpi) send_vote('bpi', bpi)
-  
+
   $('vote').disabled = true
 }
 
@@ -218,7 +218,7 @@ function on_clear(e)
 function on_clipboard(e)
 {
   var txt = clipboard.get()
-  
+
   if (txt.indexOf('/') == 0) // avoid ninjam command
     txt = ' '+txt
 
@@ -235,15 +235,19 @@ function on_random(e)
 function on_reset(e)
 {
   reset_form()
-  return false    
+  return false
 }
 
 function on_submit(e)
 {
-  // Cancel the form submit event
-  return false  
-}
+  var msg = $('chat').value
+  if (msg)
+    ninjam_chat(msg)
+  $('chat').value = ""
 
+  // Cancel the form submit event
+  return false
+}
 
 function on_save(e)
 {
@@ -268,14 +272,31 @@ function on_theme(e)
 
 function on_ninjam(e)
 {
-  ninjam_active()
+  switch ($('client').value) {
+  case "REAPER":
+    reaper_active()
+    break
+  case "NINJAM":
+    ninjam_active()
+    break
+  }
 }
 
 function on_lock_controls(e)
 {
   var state = $('lock_controls').checked
-  var controls = 'bpm bpi vote sync song setup chords key clear reset random clipboard save ninjam submit_on_change theme confirm_on_submit clear_on_save'.split(' ')
+  var controls = 'bpm bpi vote sync song setup chords key clear reset random clipboard save ninjam submit_on_change theme confirm_on_submit clear_on_save client chat'.split(' ')
   foreach(controls, function(id) {
     $(id).disabled = state
   })
+}
+
+function on_topmost_checked(e)
+{
+    run_program(topmost_command + ' ' + ($('topmost').checked ? 1 : 0))
+}
+
+function on_client_changed(e)
+{
+  $('ninjam').value = $('client').value
 }

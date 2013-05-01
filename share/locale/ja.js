@@ -34,7 +34,11 @@ var ja_locale = {
   'submit_on_change_label': '変更時に送信',
   'confirm_on_change_label': '送信前に確認',
   'clear_on_save_label': '保存時に消去',
-  'lock_controls_label': 'ロック'
+  'lock_controls_label': 'ロック',
+  'topmost_label': '前面に表示',
+  'client_label': 'クライアント',
+
+  'chat_legend': 'チャット'
 }
 
 var ja_locale2 = {
@@ -56,7 +60,7 @@ var ja_locale2 = {
   'save':'保存',
   'reset':'消去',
   'share':'共有',
-  'status': '状態チェック',
+  'status':'状態チェック',
   'stop':'停止'
 }
 

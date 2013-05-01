@@ -21,4 +21,6 @@ button#edit {
   display: none;
 }
 
-
+input#chat {
+  width: 100%;
+}

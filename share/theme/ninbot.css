@@ -6,15 +6,15 @@ body {
 }
 
 form {
-  margin-top: 15px;
-  margin-left: 10px;
+  margin-top: 10px;
+  margin-left: 0px;
 }
 
 fieldset {
   font-size: 14px;
   font-weight: bold;
-  padding: 5px;
-  margin: 5px;
+  padding: 5px 0px 5px 0px;
+  margin: 0px;
   border: none;
 }
 
@@ -24,9 +24,11 @@ legend {
 }
 
 select {
-  border-color: #888888;
-  background-color: black;
-  color: #aeaeae;
+  background:#202020;
+  color:#aeaeae;
+  padding: 2px;
+  border: solid 1px #888;
+  margin-bottom: 5px;
 }
 
 select#bpm, select#bpm {
@@ -38,6 +40,7 @@ select#song {
 }
 
 button {
+  padding-top: 5px; /* for layout */
   margin-left: 5px; /* for layout */
   background-color: #202020;
   border-style: solid;
@@ -46,8 +49,12 @@ button {
   color: #aeaeae;
 }
 
-input {
-  background-color: black;
+input#chat {
+  background: #202020;
+  color: #aeaeae;
+  padding: 2px;
+  border: solid 1px #888;
+  margin-bottom: 5px;
 }
 
 label {

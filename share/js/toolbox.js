@@ -11,17 +11,18 @@ function reset_form()
 {
   $('submit_on_change').checked = false
   on_song()
-  
+
   // Set up default values (see /user/conf/settings.js)
   $('submit_on_change').checked = default_submit_on_change_checked
   $('confirm_on_submit').checked = default_confirm_on_submit_checked
   $('clear_on_save').checked = default_clear_on_save_checked
   $('lock_controls').checked = false
+  $('topmost').checked = default_topmost
   $('song').selectedIndex = 0
   $('theme').selectedIndex = 0
   set_select_option($('bpm'), default_bpm)
   set_select_option($('bpi'), default_bpi)
-  
+
   var misc = $('misc_field')
   var prev = $('theme')
   foreach (misc_buttons_order, function (id){
@@ -30,7 +31,7 @@ function reset_form()
     e.style.display = 'inline'
     prev = e
   })
-  
+
   $('vote').disabled = false
   $('setup').disabled = false
 }
@@ -39,14 +40,14 @@ function init()
 {
   // Set window title
   document.title = window_title ? window_title : $('hta_app').applicationname
- 
+
   var form = $('form')
   var bpm_select = $('bpm')
   var bpi_select = $('bpi')
   var key_select = $('key')
   var song_select = $('song')
   var theme_select = $('theme')
- 
+
   // Load options data BPM/BPI and SONG
   foreach(BPM, function(num){ add_option(bpm_select, num, num) })
   foreach(BPI, function(num){ add_option(bpi_select, num, num) })
@@ -54,7 +55,7 @@ function init()
     add_option(song_select, idx, song[0])
   })
   foreach(KEYS, function(key, idx){
-    add_option(key_select, idx, key)  
+    add_option(key_select, idx, key)
   })
   foreach(theme_list, function(theme, idx){
     add_option(theme_select, theme, theme)
@@ -65,10 +66,10 @@ function init()
   bpi_select.style.display = 'inline'
   song_select.style.display = 'inline'
   theme_select.style.display = 'inline'
-   
+
   // Set default values for form controls.
   reset_form()
- 
+
   // Register events
   register_event($('bpm'), 'onchange', on_bpm)
   register_event($('bpi'), 'onchange', on_bpi)
@@ -87,9 +88,11 @@ function init()
   register_event($('reset'), 'onclick', on_reset)
   register_event($('ninjam'), 'onclick', on_ninjam)
   register_event($('lock_controls'), 'onclick', on_lock_controls)
+  register_event($('topmost'), 'onclick', on_topmost_checked)
+  register_event($('client'), 'onchange', on_client_changed)
   register_event(form, 'onsubmit', on_submit)
   register_event(form, 'onreset', on_reset)
-  
+
   // Initialize theme selection
   if (use_theme) {
     on_theme()
@@ -109,7 +112,7 @@ function init()
     })
     window.resizeBy(0, -1*(offsetH*2)+padding)
   }
-  
+
   // How show the links
   if (show_useful_site_links) {
     if (show_links_on_top) {
@@ -117,20 +120,20 @@ function init()
     }
   }
   else {
-    document.body.removeChild($('links'))  
+    document.body.removeChild($('links'))
   }
-  
+
   // Set user locale, and locale specific contents
   // TODO const.js locale_dir
   if (user_locale) {
     load_js(locale_dir + user_locale + '.js', 'locale')
     locale_init_toolbox()
   }
-  
+
   // Call user custom initialization
   user_init()
-  
-  
+
+
   // Hook for links
   // HTA open url by Internet Explorer by default.
   // this should be called at the tail
@@ -141,15 +144,24 @@ function init()
         register_event(link, 'onclick', hook_link(link.href))
     })
   }
-  
+
   if (chat_customize) {
     ninjam_setcharformat(chat_fgcolor, chat_bgcolor, chat_fontsize, chat_fontface)
+  }
+
+  on_topmost_checked()
+  on_client_changed()
+  $('client').selectedIndex = default_client
+
+  // TODO: move to onload event
+  if (use_transparency) {
+    run_program(setalpha_command + " " + transparent_alpha)
   }
 }
 
 
 // Bootstrap initialize code. this function is called immeditately.
-function bootstrap()
+(function()
 {
   // Initialize HTA application window pos/size
   if (window_width && window_height) {
@@ -163,5 +175,4 @@ function bootstrap()
 
   // register the init event
   register_event(window, 'onload', init)
-}
-bootstrap()
+})()
