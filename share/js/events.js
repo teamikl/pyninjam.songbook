@@ -14,7 +14,9 @@ function send_chat(msg)
   // confirm
   if ($('confirm_on_submit').checked && (! confirm(msg)))
     return
-  return ninjam_chat(msg)
+
+  var target = $('client').value
+  return ninjam_chat(target, msg)
 }
 
 function send_vote(type, num)
@@ -240,9 +242,10 @@ function on_reset(e)
 
 function on_submit(e)
 {
+  var target = $('client').value
   var msg = $('chat').value
   if (msg)
-    ninjam_chat(msg)
+    ninjam_chat(target, msg)
   $('chat').value = ""
 
   // Cancel the form submit event
@@ -251,9 +254,10 @@ function on_submit(e)
 
 function on_save(e)
 {
+  var target = $('client').value
   var savefile = log_dir + getTimestamp() + chatlog_ext
 
-  ninjam_savechatlog(savefile)
+  ninjam_savechatlog(target, savefile)
 
   if ($('clear_on_save').checked)
     on_clear()
@@ -272,14 +276,8 @@ function on_theme(e)
 
 function on_ninjam(e)
 {
-  switch ($('client').value) {
-  case "REAPER":
-    reaper_active()
-    break
-  case "NINJAM":
-    ninjam_active()
-    break
-  }
+  var target = $('client').value
+  ninjam_active(target)
 }
 
 function on_lock_controls(e)

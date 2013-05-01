@@ -13,13 +13,13 @@
 #define NINJAM_EDIT_CLASS "RichEdit20A"
 #define REAPER_HWND_CLASS "REAPERwnd"
 #define REAPER_EDIT_CLASS "RichEditChild"
+#define REANINJAM_TITLE "ReaNINJAM v0.13"
 
 #define IsReaper(x) (strcmp(x,"REAPER") == 0)
 
-#define getNinjam(target) \
-    FindWindow( \
-        IsReaper(target) ? REAPER_HWND_CLASS : NINJAM_HWND_CLASS, \
-        NULL)
+#define getNinjam(target) (IsReaper(target)) \
+      ? FindWindow(NULL, REANINJAM_TITLE) \
+      : FindWindow(NINJAM_HWND_CLASS, NULL)
 
 #define getEdit(target,parent,child) \
     FindWindowEx( \

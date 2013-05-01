@@ -26,7 +26,7 @@ int main(int argc, char **argv)
   child = getEdit(target, parent, child);
   if (child) {
     SendMessage(child, WM_SETTEXT, 0, (LPARAM)msg);
-    SendMessage(child, WM_CHAR, VK_RETURN, 0);
+    PostMessage(child, WM_CHAR, VK_RETURN, 0);
   }
 
   return 0;
