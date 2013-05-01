@@ -1,12 +1,13 @@
 
-#include <windows.h>
 #include "ninjam_common.h"
 
-int main(void)
+int main(int argc, char **argv)
 {
   HWND parent;
 
-  parent = FindWindow(NINJAM_HWND_CLASS, NULL);
+  if (argc != 2) return 1;
+
+  parent = getNinjam(argv[1]);
   if (!parent) return 1;
 
   if (IsIconic(parent)) {
@@ -15,8 +16,8 @@ int main(void)
   else {
     SetForegroundWindow(parent);
   }
-  
+
   // TODO: SetFocus to chat input.
-  
+
   return 0;
 }

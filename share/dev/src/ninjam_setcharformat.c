@@ -62,43 +62,54 @@ inline char tohex8(char c)
  * usage: fgcolor bgcolor font-size font-face
  */
 
+enum {
+    Target = 1,
+    TextColor,
+    BackColor,
+    FontSize,
+    FontName
+};
+
 int main(int argc, char **argv)
 {
+  char *target = NULL;
+
   HWND parent;
   HWND child;
   CHARFORMAT cf;
   CHARFORMAT *vcf;
   DWORD dwProcessId = 0;
   HANDLE hProcess;
-  
+
   DWORD dwMask = 0;
   LONG yHeight = 0;
   COLORREF crTextColor = 0;
   COLORREF crBackgroundColor = RGB(0xFF,0xFF,0xFF);
   char *facename = NULL;
 
-
-  if (argc != 5)
+  if (argc != 6)
   {
-    fprintf(stderr, "usage: %s fgcolor bgcolor font-size font-face\n", argv[0]);
+    fprintf(stderr, "usage: %s [NINJAM|REAPER] fgcolor bgcolor font-size font-face\n", argv[0]);
     return 1;
   }
 
-  parent = FindWindow(NINJAM_HWND_CLASS, 0);
+  target = argv[Target];
+
+  parent = getNinjam(target);
   if (! parent) return 1;
-  child = FindWindowEx(parent, 0, NINJAM_EDIT_CLASS, 0);
+  child = getEdit(target, parent, NULL);
   if (! child) return 1;
 
-  crTextColor = (COLORREF)toColor(argv[1]);
-  crBackgroundColor = (COLORREF)toColor(argv[2]);
-  yHeight = (LONG)atoi(argv[3]);
-  facename = argv[4];
+  crTextColor = (COLORREF)toColor(argv[TextColor]);
+  crBackgroundColor = (COLORREF)toColor(argv[BackColor]);
+  yHeight = (LONG)atoi(argv[FontSize]);
+  facename = argv[FontName];
 
   if (yHeight > 0) // *argv[3]
     dwMask |= 0x80000000;
-  if (*argv[1])
+  if (*argv[TextColor])
     dwMask |= 0x40000000;
-  if (*argv[4])
+  if (*argv[FontName])
     dwMask |= 0x20000000;
 
   memset(&cf, 0, sizeof(cf));
@@ -107,20 +118,20 @@ int main(int argc, char **argv)
   cf.crTextColor = crTextColor;
   cf.yHeight = yHeight * 20;
   strcpy(cf.szFaceName, facename);
-  
+
   GetWindowThreadProcessId(child, &dwProcessId);
   hProcess = OpenProcess(PROCESS_VM_OPERATION|PROCESS_VM_WRITE, FALSE, dwProcessId);
   if (hProcess) {
     vcf = (CHARFORMAT *)VirtualAllocEx(hProcess, NULL, sizeof(cf), MEM_RESERVE|MEM_COMMIT, PAGE_READWRITE);
     WriteProcessMemory(hProcess, vcf, &cf, sizeof(cf), NULL);
-    
+
     SendMessage(child, EM_SETCHARFORMAT, SCF_ALL, (LPARAM)vcf);
-    
+
     VirtualFreeEx(hProcess, vcf, 0, MEM_RELEASE);
     CloseHandle(hProcess);
   }
-  
-  if (*argv[2]) {
+
+  if (*argv[BackColor]) {
     SendMessage(child, EM_SETBKGNDCOLOR, 0, crBackgroundColor);
   }
 

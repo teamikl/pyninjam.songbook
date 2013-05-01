@@ -2,7 +2,7 @@
  * @author tea
  * @date 2010/04/27
  */
- 
+
 #include <stdio.h>
 #include <windows.h>
 #include "ninjam_common.h"
@@ -11,19 +11,17 @@ int main(int argc, char **argv)
 {
   HWND parent, child;
   char *chatlog;
+  char *target;
   int logsize;
-  
-  parent = FindWindow(NINJAM_HWND_CLASS, 0);
-  if (!parent) {
-    fprintf(stderr, "NINJAM not running.\n");
-    return 1;
-  }
 
-  child = FindWindowEx(parent, 0, NINJAM_EDIT_CLASS, 0);
-  if (!child) {
-    fprintf(stderr, "could not found edit control\n");
-    return 1;
-  }
+  if (argc != 2) return 1;
+  target = argv[1];
+
+  parent = getNinjam(target);
+  if (!parent) return 1;
+
+  child = getEdit(target, parent, NULL);
+  if (!child) return 1;
 
   logsize = SendMessage(child, WM_GETTEXTLENGTH, 0, 0) + 1;
   if (logsize == 0) {
@@ -40,7 +38,7 @@ int main(int argc, char **argv)
   SendMessage(child, WM_GETTEXT, logsize+1, (LPARAM)chatlog);
 
   fwrite(chatlog, sizeof(char), logsize, stdout);
-  
+
   free(chatlog);
 
   return 0;
