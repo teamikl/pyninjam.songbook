@@ -1,14 +1,14 @@
-<html>
-<head>
-<title id="title"></title>
+<!DOCTYPE html>
 <!--
   AppName: NINJAM SongBook Utility
   Author: tea
   Since: 2010/04/22
   License: MIT license
 -->
+<html>
+<head>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8" />
 <meta http-equiv="MSThemeCompatible" content="Yes" />
 
 <link href="./share/css/toolbox.css" type="text/css" rel="stylesheet" />
@@ -25,6 +25,7 @@
 <script type="text/javascript" src="./share/js/clipboard.js"></script>
 <script type="text/javascript" src="./share/js/ninjam.js"></script>
 <script type="text/javascript" src="./share/js/events.js" id="events_js"></script>
+<script type="text/javascript" src="./share/js/fieldset.js"></script>
 <script type="text/javascript" src="./share/js/api.js"></script>
 <script type="text/javascript" src="./user/conf/init.js"></script>
 <script type="text/javascript" src="./share/js/toolbox.js"></script>
@@ -42,7 +43,7 @@
   showintaskbar="yes"
   singleinstance="yes"
   sysmenu="yes"
-  version="1.14"
+  version="1.15"
   windowstate="normal"
   scroll="no"
   selection="no"
@@ -50,21 +51,22 @@
   navibable="no"
 />
 
+<title></title>
 </head>
 <body>
-  <form id="form">
+  <form id="form" action="">
   <fieldset id="vote_field">
     <legend id="vote_legend">Vote BPM/BPI</legend>
-    <span id="bpm_label">BPM:</span>
+    <label for="bpm" id="bpm_label">BPM:</label>
     <select id="bpm"><option value=""></option></select>
-    <span id="bpi_label">BPI:</span>
+    <label for="bpi" id="bpi_label">BPI:</label>
     <select id="bpi"><option value=""></option></select>
     <button id="vote">!vote</button>
     <button id="sync">sync</button>
   </fieldset>
   <fieldset id="song_field">
     <legend id="song_legend">Select a song</legend>
-    <span id="song_label">Song:</span>
+    <label for="song" id="song_label">Song:</label>
     <select id="song"></select>
     <select id="key"></select>
     <button id="setup">Setup</button>
@@ -73,7 +75,7 @@
   </fieldset>
   <fieldset id="misc_field">
     <legend id="misc_legend">Misc</legend>
-    <span id="theme_label">Theme:</span>
+    <label for="theme" id="theme_label">Theme:</label>
     <select id="theme"></select>
     <button id="save">Save</button>
     <button id="clear">Clear</button>

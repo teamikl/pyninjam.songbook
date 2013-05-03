@@ -29,14 +29,14 @@ var chatlog_ext = ".log"
 var default_submit_on_change_checked = true
 var default_confirm_on_submit_checked = true
 var default_clear_on_save_checked = true
-var default_topmost = true // Always on Top
+var default_topmost = false // Always on Top
 
 var default_bpm = 120
 var default_bpi = 16
 
 // transparency window alpha range(0..255)
 var use_transparency = false
-var transparent_alpha = 120
+var transparent_alpha = 200
 
 // Customize chat field.
 var chat_customize = false // or true
@@ -44,6 +44,10 @@ var chat_fontsize = 20
 var chat_fontface = "Meiryo" // "MS P Gothic" and so on
 var chat_bgcolor = RGB(0xEE, 0xEE, 0xFF) // or "#FFFFFF"
 var chat_fgcolor = RGB(0x77, 0x77, 0xFF) // or "#000000"
+
+// initial loaded event interval (ms)
+// If default topmost/transparancy did not work, put bigger number here.
+var loaded_event_interval = 100;
 
 // status check interval
 var status_check_interval_min = 3
@@ -71,6 +75,27 @@ var theme_list = [
   'default', 'ninbot',
 ]
 
+// fieldset fold type "toggle" or "collapse" or null
+var fieldset_fold = "collapse"
+
+// comment out default collapsed fieldset
+var fieldset_default_opened = [
+  'vote_field',
+  'song_field',
+  'misc_field',
+  'option_field',
+  'chat_field',
+]
+
+// Order of fieldset
+var fieldset_order = [
+  'vote_field',
+  'song_field',
+  'misc_field',
+  'option_field',
+  'chat_field',
+]
+
 // Order of misc buttons
 var misc_buttons_order = [
   'random', 'clipboard', 'save', 'clear', 'reset', 'ninjam'
@@ -80,8 +105,8 @@ var misc_buttons_order = [
 // Set window_x or window_y negative for centering.
 var window_x = -1
 var window_y = -1
-var window_width = 640
-var window_height = 300
+var window_width = 700
+var window_height = 310
 
 // If you want set another title.
 var window_title = null

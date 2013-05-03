@@ -28,7 +28,18 @@ function reset_form()
   foreach (misc_buttons_order, function (id){
     var e = $(id)
     misc.insertBefore(e, prev.nextSibling)
-    e.style.display = 'inline'
+    // XXX: e.style.display = 'block'
+    prev = e
+  })
+
+  var form = $('form')
+  prev = null
+  foreach (fieldset_order, function (id){
+    var e = $(id)
+    if (prev)
+      form.insertBefore(e, prev.nextSibling)
+    else
+      form.appendChild(e)
     prev = e
   })
 
@@ -61,11 +72,13 @@ function init()
     add_option(theme_select, theme, theme)
   })
 
-  // Refresh select box layout by update css
+  // XXX: Refresh select box layout by update css
+  /*
   bpm_select.style.display = 'inline'
   bpi_select.style.display = 'inline'
   song_select.style.display = 'inline'
   theme_select.style.display = 'inline'
+  */
 
   // Set default values for form controls.
   reset_form()
@@ -92,6 +105,29 @@ function init()
   register_event($('client'), 'onchange', on_client_changed)
   register_event(form, 'onsubmit', on_submit)
   register_event(form, 'onreset', on_reset)
+
+  var all_fields = map($, ['vote_field', 'song_field', 'misc_field', 'option_field', 'chat_field'])
+  switch (fieldset_fold) {
+  case "toggle":
+    togglable(all_fields, $('vote_field'), $('vote_legend'))
+    togglable(all_fields, $('song_field'), $('song_legend'))
+    togglable(all_fields, $('misc_field'), $('misc_legend'))
+    togglable(all_fields, $('option_field'), $('option_legend'))
+    togglable(all_fields, $('chat_field'), $('chat_legend'))
+    hide_all_fields(all_fields)
+    break
+  case "collapse":
+    collapsable($('vote_field'), $('vote_legend'))
+    collapsable($('song_field'), $('song_legend'))
+    collapsable($('misc_field'), $('misc_legend'))
+    collapsable($('option_field'), $('option_legend'))
+    collapsable($('chat_field'), $('chat_legend'))
+    hide_all_fields(all_fields)
+    foreach(fieldset_default_opened,function(x){
+      $(x).className = ""
+    })
+    break
+  }
 
   // Initialize theme selection
   if (use_theme) {
@@ -149,14 +185,18 @@ function init()
     ninjam_setcharformat(chat_fgcolor, chat_bgcolor, chat_fontsize, chat_fontface)
   }
 
-  on_topmost_checked()
   on_client_changed()
   $('client').selectedIndex = default_client
 
-  // TODO: move to onload event
-  if (use_transparency) {
-    run_program(setalpha_command + " " + transparent_alpha)
+
+  var _loaded = function() {
+    if (use_transparency) {
+      run_program(setalpha_command + " " + transparent_alpha)
+    }
+    on_topmost_checked()
   }
+
+  setTimeout(_loaded, loaded_event_interval);
 }
 
 

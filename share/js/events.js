@@ -283,7 +283,7 @@ function on_ninjam(e)
 function on_lock_controls(e)
 {
   var state = $('lock_controls').checked
-  var controls = 'bpm bpi vote sync song setup chords key clear reset random clipboard save ninjam submit_on_change theme confirm_on_submit clear_on_save client chat'.split(' ')
+  var controls = 'bpm bpi vote sync song setup chords key clear reset random clipboard save ninjam submit_on_change theme confirm_on_submit clear_on_save topmost client chat'.split(' ')
   foreach(controls, function(id) {
     $(id).disabled = state
   })
@@ -291,7 +291,7 @@ function on_lock_controls(e)
 
 function on_topmost_checked(e)
 {
-    run_program(topmost_command + ' ' + ($('topmost').checked ? 1 : 0))
+  run_program(topmost_command + ' ' + ($('topmost').checked ? 1 : 0))
 }
 
 function on_client_changed(e)

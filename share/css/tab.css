@@ -31,7 +31,7 @@ ul.tab-menu {
   color: #7777ff;
   background-color: #aaaaff;
   width: 100px;
-  
+
 }
 
 .tab-panel {
@@ -42,4 +42,3 @@ ul.tab-menu {
 .tab-hide {
   display: none;
 }
-

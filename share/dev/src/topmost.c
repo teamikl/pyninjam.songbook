@@ -17,6 +17,7 @@ int main(int argc, char **argv)
     if (!hwnd)
         return EXIT_FAILURE;
 
-    return SetWindowPos(hwnd, topMost, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE)
-            ? EXIT_SUCCESS : EXIT_FAILURE;
+    SetWindowPos(hwnd, topMost, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
+
+    return EXIT_SUCCESS;
 }

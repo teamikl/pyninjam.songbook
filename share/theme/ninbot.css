@@ -2,7 +2,9 @@
 
 body {
   background-color: black;
-  color: 336699;
+  color: #336699;
+  padding: 5px;
+  margin: 0px;
 }
 
 form {
@@ -13,14 +15,17 @@ form {
 fieldset {
   font-size: 14px;
   font-weight: bold;
-  padding: 5px 0px 5px 0px;
-  margin: 0px;
+  padding: 1px 5px 1px 5px;
+  margin: 0px 0px 1px 0px;
   border: none;
+  background: #202020;
+  text-align: right;
 }
 
 legend {
-  float: right;
-  display: none;
+  font-size: 12px;
+  float: left;
+  color: darkOrange;
 }
 
 select {
@@ -28,7 +33,6 @@ select {
   color:#aeaeae;
   padding: 2px;
   border: solid 1px #888;
-  margin-bottom: 5px;
 }
 
 select#bpm, select#bpm {
@@ -49,6 +53,18 @@ button {
   color: #aeaeae;
 }
 
+button:hover {
+  color: darkOrange;
+  border-color: darkOrange;
+}
+
+label:hover {
+  color: darkOrange;
+  cursor: hand;
+}
+
+/* TODO: hover and selected for select option */
+
 input#chat {
   background: #202020;
   color: #aeaeae;
@@ -57,10 +73,13 @@ input#chat {
   margin-bottom: 5px;
 }
 
+input#chat:hover {
+  /* border-color: darkOrange; */
+}
+
 label {
   font-size: 12px;
-  font-weight: normal;
-  color: darkOrange;
+  color: darkGrey;
 }
 
 div#links {
@@ -77,4 +96,12 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+input#chat {
+  width: 90%;
+}
+
+.collapsed legend {
+  color: darkGrey;
 }

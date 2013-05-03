@@ -1,7 +1,7 @@
 /* Template for customize CSS */
 
 body {
-  background-color: whitesmoke; 
+  background-color: whitesmoke;
   color: maroon;
   font-size: 12;
   padding: 2px;
@@ -9,15 +9,13 @@ body {
 }
 
 form {
-  margin-top: 2px;
-  margin-left: 5px;
-  margin-bottom: 5px;
+  margin: 0px;
 }
 
 fieldset {
   font-size: 12px;
   font-weight: bold;
-  padding: 2px;
+  padding: 1px;
   margin: 0px;
 }
 
@@ -32,7 +30,7 @@ select {
 }
 
 select#bpm, select#bpm {
-    
+
 }
 
 select#song {
@@ -53,7 +51,7 @@ label {
 
 div#links {
   background-color: maroon;
-  padding: 5px; 
+  padding: 5px;
 }
 
 a {
@@ -65,3 +63,12 @@ a:hover {
   color: white;
 }
 
+legend {
+  color: maroon;
+}
+fieldset.collapsed {
+  background-color: maroon;
+}
+fieldset.collapsed legend {
+  color: whitesmoke;
+}

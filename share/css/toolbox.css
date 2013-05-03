@@ -12,15 +12,38 @@ button {
   cursor: hand;
 }
 
-
-#misc_field button {
-  display: none;
-}
-
 button#edit {
   display: none;
 }
 
 input#chat {
-  width: 100%;
+  width: 98%;
 }
+
+#client_label {
+  display: none;
+}
+
+/* for collapsable */
+
+legend {
+  cursor: hand;
+  cursor: pointer;
+}
+fieldset.collapsed {
+  cursor: hand;
+  cursor: pointer;
+  border: none;
+}
+
+.collapsed legend {
+
+}
+
+.collapsed * {
+  display: none;
+}
+.collapsed legend {
+  display: inline;
+}
+

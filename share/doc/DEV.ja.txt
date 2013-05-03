@@ -3,23 +3,29 @@
 ==================================================
 
 
+[2013/05/02] v1.14変更
+
+ * REAPER対応により、各コマンドは第一引数に、
+  "REAPER" もしくは "NINJAM" の文字列を取るようになりました。
+  文中のコマンド引数の NINJAM/REAPER は適宜読み替えて下さい。
+  TODO: 文章書き直し
+
+ * /bin/ninjam_vote.bat ファイルは削除しました。
+
+
+
 基本的に、出来ることは
 
 『 win32/ninjam client のチャットへ 何か文字を送る 』
 
 これだけです。
 
-    
-    * /bin/ninjam_chat.exe "メッセージ"
+
+    * /bin/ninjam_chat.exe NINJAM "メッセージ"
 
         ninjamへ メッセージを送信するコマンド
 
         改行や空白を含む長文を送る場合、ダブルクォート等で囲ってください。
-
-
-    * /bin/ninjam_vote.bat [bpm|bpi] number
-
-        ninjamへ !voteコマンドを送信するコマンド
 
 
     * /share/dev/src/ninjam_chat.c
@@ -27,19 +33,36 @@
         上記のソースコード。tcc(tiny c compiler)でコンパイルしています。
 
 
-
-ninjam_chat.c 解説
--------------------
+ninjam_chat.c 解説 (WIN32API)
+--------------------------------
 
     (1) Ninjam client のウィンドウを探し出す。
         Ninjam client は起動し、予めサーバへ接続しておいて下さい。
 
+    // NINJAM の場合、クラス名のウィンドウを探す。
+    HWND parent = FindWindow("NINJAMwnd", NULL);
+
+    // ReaNINJAM の場合、"ReaNINJAM v0.13" というタイトルのウィンドウを探しています
+    HWND parent = FindWindow(NULL, "ReaNINJAM v0.13")
+
+
     (2) チャットの発言入力欄のコントロールを探し出す。
+
+    // NINJAM の場合は "RichEdit20A", ReaNINJAM の場合は "RichEditChild"
+    // という名前のエディト・コントロールを探しています。
+    // 最初に見つかったものはチャットのログ、2つ目が入力欄です。
+
+    HWND child = NULL;
+    child = FindWindowEx(parent, child, "RichEditChild", NULL);
+    child = FindWindowEx(parent, child, "RichEditChild", NULL);
 
     (3) 入力欄に文字列を設定する。
 
+    SendMessage(child, WM_SETTEXT, 0, "hi");
+
     (4) ENTERキー入力を送り、発言を送信する。
 
+    PostMessage(child, WM_CHAR, VK_RETURN, 0);
 
 
     コンパイルには tcc (http://bellard.org/tcc/) の Windows binary を利用し、
@@ -54,7 +77,7 @@ ninjam_chat.c 解説
   var WSH = new ActiveXObject("WScript.Shell")
 
   function ninjam_chat(message) {
-    return WSH.Run('ninjam_chat "' + message + '"', 7) 
+    return WSH.Run('ninjam_chat NINJAM "' + message + '"', 7)
   }
 
   function ninjam_vote(type, num) {
@@ -67,10 +90,10 @@ ninjam_chat.c 解説
 
 
   // ※ 注意
-  // 
+  //
   // ブラウザ上のJavaScriptからは、セキュリティ等の制限により
   // 通常、外部プログラムの呼び出しは行えません。
-  // 
+  //
   // JavaScript で開発する場合は、
   // WSH(Windows Scripting Host), HTA(HTML Application) 等の仕組みを利用してください。
   //
@@ -88,7 +111,7 @@ ninjam_chat.c 解説
 
   var WSH = new ActiveXObject("WScript.Shell")
 
-  WSH.Run('ninjam_chat hi', 7)
+  WSH.Run('ninjam_chat NINJAM hi', 7)
 
 
 
