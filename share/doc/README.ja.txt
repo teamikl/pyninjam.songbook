@@ -4,7 +4,7 @@
 環境
 --------
 
-    win32/ninjam client専用です。reaperへは対応しません。
+    windows の standalone クライアント、もしくは ReaNINJAM v0.13
 
 
 --------
@@ -17,9 +17,11 @@
         * sync       ... NINJAM から現在の BPM/BPI を所得し設定します。
                          BPM/BPI が現在のリストにない場合は設定されません。
                          ※ 一時的に外部プログラム起動による別ウィンドウが表示されます。
+                         ※ ReaNINJAM では機能しません。
 
         * Setup      ... 選択されている曲の、BPM/BPI/コードを送信。
         * Chords     ... 選択されている曲の、コードのみを送信。
+        * To Clipboard ... Chordsボタン押下時、コードをクリップボードにコピー
 
         * Theme      ... スタイルシートを切り替えます。
         * Clipboard  ... クリップボードの内容をチャットへ発言。
@@ -29,32 +31,37 @@
                          エラーが出る場合は、/user/conf/settings.js の ninjam_exe に
                          正しいNINJAMの実行ファイルの場所を指定してください。
 
+                         オプションでReaNINJAM選択時はReaperを起動できるようになりました。
+
+
         * vote on change    ... 選択時に即送信。
         * confirm on submit ... 送信前に確認ダイアログを出す。
         * clear on save     ... 保存後、NINJAMのチャットログを消去する。
         * lock controls     ... コントロールを非アクティブ変更します。
-
+        * always on top     ... ウィンドウを常に前面に表示
+        * NINJAM / ReaNINJAM ... 通常のNINAJMかReaNINJAMを選択します
 
     誤動作防止の為、"vote!", "Setup" は一度送信した後、
     BPM/BPI/曲を変更する迄、再度クリック出来ません。
     リセットボタンや、F5キーによるアプリケーションの再起動でも解除できます。
-    
-    
+
+
     * songbook.hta
-    
+
       * View 曲一覧表示
         * Double click: 曲のデータを編集
         * Right click: 削除
-      
+
       * Edit
         * タイトル・BPM/BPI・キー・コードを入力して保存出来ます。
         * ./user/tmp/ へ以前のデータはバックアップされます。
         * toolbox.hta で変更後のデータを読み込むには F5 で再読み込みしてください。
-      
+
       * Server
         * サーバの状態監視
         * サーバ名をダブルクリックで、NINJAMの接続ダイアログが開きます
-        
+          ※ ReaNINJAM では機能しません。
+
       * Develop
         * 最新版へのリンク
 
