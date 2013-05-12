@@ -22,6 +22,7 @@ function reset_form()
   $('theme').selectedIndex = 0
   set_select_option($('bpm'), default_bpm)
   set_select_option($('bpi'), default_bpi)
+  $('chords_to_clipboard').checked = default_chords_to_clipboard
 
   var misc = $('misc_field')
   var prev = $('theme')

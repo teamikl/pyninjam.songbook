@@ -21,6 +21,7 @@ var ja_locale = {
   'setup': '設定',
   'chords': 'コード',
   'song_label': '曲: ',
+  'chords_to_clipboard_label': 'クリップボードへコピー',
 
   'misc_legend': 'その他',
   'theme_label': 'テーマ: ',

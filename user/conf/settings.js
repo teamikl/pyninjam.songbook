@@ -33,6 +33,7 @@ var default_topmost = false // Always on Top
 
 var default_bpm = 120
 var default_bpi = 16
+var default_chords_to_clipboard = false
 
 // transparency window alpha range(0..255)
 var use_transparency = false

@@ -14,6 +14,7 @@ var en_locale = {
   'setup': 'Setup',
   'chords': 'Chords',
   'song_label': 'Song: ',
+  'chords_to_clipboard_label': 'To Clipboard',
 
   'misc_legend': 'Misc',
   'theme_label': 'Theme: ',

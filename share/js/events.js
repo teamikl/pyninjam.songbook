@@ -143,6 +143,16 @@ function on_setup(e)
 
 function on_chords(e)
 {
+  if ($('chords_to_clipboard').checked) {
+    // TODO: duplicated code to "get_chords" function
+    var key = $('key').value
+    var song = SONG[$('song').value]
+    var name = song[0]
+    var chords = transpose_chords(song[3], key)
+    if (chords) clipboard.set(name + "\n" + chords)
+    return
+  }
+
   send_chords($('song').value, $('key').value)
 }
 
