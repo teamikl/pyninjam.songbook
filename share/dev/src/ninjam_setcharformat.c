@@ -53,7 +53,7 @@ inline char tohex8(char c)
 #define tohex8(c) (( 57 >= (c) && (c) >= 48) ? ((c)-48) :    \
                    (102 >= (c) && (c) >= 97) ? ((c)-97+10) : \
                    ( 70 >= (c) && (c) >= 65) ? ((c)-65+10) : 0)
-#define tohex16(x) ((tohex8((x)[1]) << 4) | tohex8((x)[0]))
+#define tohex16(x) ((tohex8((x)[0]) << 4) | tohex8((x)[1]))
 #define str2color(x) (RGB(tohex16(&(x)[0]),tohex16(&(x)[2]),tohex16(&(x)[4])))
 #define toColor(x) (((x)[0] == '#') ? str2color(&(x)[1]) : atoi(x))
 
