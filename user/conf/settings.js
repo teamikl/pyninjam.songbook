@@ -7,7 +7,7 @@ var BPM = range(40, 200, 10)
 var BPI = range(4, 64, 4)
 
 // default client 0 "NINJAM" or 1 "ReaNINJAM"
-var default_client = 0
+var default_client = 1
 
 // Set your locale ("en", "ja", or null)
 var user_locale = "ja"
@@ -36,15 +36,15 @@ var default_bpi = 16
 var default_chords_to_clipboard = false
 
 // transparency window alpha range(0..255)
-var use_transparency = false
+var use_transparency = true
 var transparent_alpha = 200
 
 // Customize chat field.
-var chat_customize = false // or true
+var chat_customize = true // or true
 var chat_fontsize = 20
 var chat_fontface = "Meiryo" // "MS P Gothic" and so on
-var chat_bgcolor = RGB(0xEE, 0xEE, 0xFF) // or "#FFFFFF"
-var chat_fgcolor = RGB(0x77, 0x77, 0xFF) // or "#000000"
+var chat_bgcolor = "#808080" // or "#808080"
+var chat_fgcolor = RGB(0x00, 0x00, 0x00) // or "#000000"
 
 // initial loaded event interval (ms)
 // If default topmost/transparancy did not work, put bigger number here.
