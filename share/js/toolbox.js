@@ -182,13 +182,13 @@ function init()
     })
   }
 
-  if (chat_customize) {
-    ninjam_setcharformat(chat_fgcolor, chat_bgcolor, chat_fontsize, chat_fontface)
-  }
 
-  on_client_changed()
   $('client').selectedIndex = default_client
+  on_client_changed()
 
+  if (chat_customize) {
+    ninjam_setcharformat($('client').value, chat_fgcolor, chat_bgcolor, chat_fontsize, chat_fontface)
+  }
 
   var _loaded = function() {
     if (use_transparency) {
